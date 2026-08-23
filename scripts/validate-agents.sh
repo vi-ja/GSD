@@ -1,12 +1,12 @@
-#!/bin/bash
-# GSD Subagent Validation Script
+﻿#!/bin/bash
+# DevFlow Subagent Validation Script
 # Validates all subagent definitions in .agents/agents/
 
 error_count=0
 agents_checked=0
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " GSD ► VALIDATING SUBAGENTS"
+echo " DevFlow ► VALIDATING SUBAGENTS"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
@@ -113,3 +113,4 @@ else
     echo "❌ Validation failed"
     exit 1
 fi
+

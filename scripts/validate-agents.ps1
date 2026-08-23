@@ -1,11 +1,11 @@
-﻿# GSD Subagent Validation Script
+﻿# DevFlow Subagent Validation Script
 # Validates all subagent definitions in .agents/agents/
 
 $ErrorCount = 0
 $AgentsChecked = 0
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host " GSD ► VALIDATING SUBAGENTS" -ForegroundColor Cyan
+Write-Host " DevFlow ► VALIDATING SUBAGENTS" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
@@ -122,3 +122,4 @@ if ($ErrorCount -eq 0) {
     Write-Host "❌ Validation failed" -ForegroundColor Red
     exit 1
 }
+

@@ -1,4 +1,4 @@
-# Gemini Adapter
+﻿# Gemini Adapter
 
 > **Everything in this file is optional.**
 > For canonical rules, see [PROJECT_RULES.md](../PROJECT_RULES.md).
@@ -90,3 +90,4 @@ For Gemini-specific tips, see adapters/GEMINI.md.
 ---
 
 *See PROJECT_RULES.md for canonical requirements.*
+

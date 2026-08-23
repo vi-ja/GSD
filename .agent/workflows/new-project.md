@@ -1,4 +1,4 @@
----
+﻿---
 description: Initialize a new project with deep context gathering
 ---
 
@@ -10,11 +10,11 @@ Initialize a new project through unified flow: questioning → research (optiona
 This is the most leveraged moment in any project. Deep questioning here means better plans, better execution, better outcomes. One command takes you from idea to ready-for-planning.
 
 **Creates:**
-- `.gsd/SPEC.md` — project specification
-- `.gsd/ROADMAP.md` — phase structure
-- `.gsd/STATE.md` — project memory
-- `.gsd/ARCHITECTURE.md` — system design (if brownfield)
-- All other .gsd/ documentation files
+- `.devflow/SPEC.md` — project specification
+- `.devflow/ROADMAP.md` — phase structure
+- `.devflow/STATE.md` — project memory
+- `.devflow/ARCHITECTURE.md` — system design (if brownfield)
+- All other .devflow/ documentation files
 
 **After this command:** Run `/plan 1` to start execution.
 </objective>
@@ -28,7 +28,7 @@ This is the most leveraged moment in any project. Deep questioning here means be
 
    **PowerShell:**
    ```powershell
-   if (Test-Path ".gsd/SPEC.md") {
+   if (Test-Path ".devflow/SPEC.md") {
        Write-Error "Project already initialized. Use /progress"
        exit 1
    }
@@ -36,7 +36,7 @@ This is the most leveraged moment in any project. Deep questioning here means be
 
    **Bash:**
    ```bash
-   if [ -f ".gsd/SPEC.md" ]; then
+   if [ -f ".devflow/SPEC.md" ]; then
        echo "Error: Project already initialized. Use /progress" >&2
        exit 1
    fi
@@ -69,7 +69,7 @@ This is the most leveraged moment in any project. Deep questioning here means be
        Select-Object -First 20
    
    $hasPackage = Test-Path "package.json" -or Test-Path "requirements.txt" -or Test-Path "Cargo.toml"
-   $hasArchitecture = Test-Path ".gsd/ARCHITECTURE.md"
+   $hasArchitecture = Test-Path ".devflow/ARCHITECTURE.md"
    ```
 
    **Bash:**
@@ -78,7 +78,7 @@ This is the most leveraged moment in any project. Deep questioning here means be
        -not -path '*/node_modules/*' -not -path '*/.git/*' | head -20)
    
    has_package=$(test -f "package.json" -o -f "requirements.txt" -o -f "Cargo.toml" && echo true || echo false)
-   has_architecture=$(test -f ".gsd/ARCHITECTURE.md" && echo true || echo false)
+   has_architecture=$(test -f ".devflow/ARCHITECTURE.md" && echo true || echo false)
    ```
 
 ---
@@ -114,7 +114,7 @@ Exit command.
 Display banner:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► QUESTIONING
+ DevFlow ► QUESTIONING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -166,7 +166,7 @@ Loop until "Create SPEC.md" selected.
 
 ## Phase 4: Write SPEC.md
 
-Create `.gsd/SPEC.md`:
+Create `.devflow/SPEC.md`:
 
 ```markdown
 # SPEC.md — Project Specification
@@ -216,7 +216,7 @@ B) Skip research — I know what I want, let's plan
 ```
 
 **If research selected:**
-- Create `.gsd/RESEARCH.md` with findings
+- Create `.devflow/RESEARCH.md` with findings
 - Document technology choices and rationale
 - Return to continue
 
@@ -247,7 +247,7 @@ Generate requirements from SPEC.md:
 
 ## Phase 7: Create Roadmap
 
-Create `.gsd/ROADMAP.md`:
+Create `.devflow/ROADMAP.md`:
 
 ```markdown
 # ROADMAP.md
@@ -290,22 +290,22 @@ Create `.gsd/ROADMAP.md`:
 ## Phase 8: Initialize Remaining Files
 
 Create with templates:
-- `.gsd/STATE.md` — Empty state
-- `.gsd/DECISIONS.md` — Empty ADR log
-- `.gsd/JOURNAL.md` — Empty journal
-- `.gsd/TODO.md` — Empty todo list
+- `.devflow/STATE.md` — Empty state
+- `.devflow/DECISIONS.md` — Empty ADR log
+- `.devflow/JOURNAL.md` — Empty journal
+- `.devflow/TODO.md` — Empty todo list
 
 Create directories:
-- `.gsd/phases/`
-- `.gsd/templates/`
+- `.devflow/phases/`
+- `.devflow/templates/`
 
 ---
 
 ## Phase 9: Initial Commit
 
 ```bash
-git add .gsd/
-git commit -m "chore: initialize GSD project
+git add .devflow/
+git commit -m "chore: initialize DevFlow project
 
 - SPEC.md with vision and goals
 - ROADMAP.md with {N} phases
@@ -318,18 +318,18 @@ git commit -m "chore: initialize GSD project
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PROJECT INITIALIZED ✓
+ DevFlow ► PROJECT INITIALIZED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Project: {name}
 Phases: {N}
 
 Files created:
-• .gsd/SPEC.md (FINALIZED)
-• .gsd/ROADMAP.md ({N} phases)
-• .gsd/STATE.md
-• .gsd/DECISIONS.md
-• .gsd/JOURNAL.md
+• .devflow/SPEC.md (FINALIZED)
+• .devflow/ROADMAP.md ({N} phases)
+• .devflow/STATE.md
+• .devflow/DECISIONS.md
+• .devflow/JOURNAL.md
 
 ───────────────────────────────────────────────────────
 
@@ -351,7 +351,7 @@ Files created:
 <questioning_philosophy>
 ## Why Deep Questioning Matters
 
-The original GSD emphasizes that `/new-project` is the most leveraged moment. 
+The original DevFlow emphasizes that `/new-project` is the most leveraged moment. 
 Every minute spent understanding what to build saves hours of building the wrong thing.
 
 **Signs questioning is done:**
@@ -366,3 +366,4 @@ Every minute spent understanding what to build saves hours of building the wrong
 - Success is defined as "it works"
 - Scope keeps expanding during discussion
 </questioning_philosophy>
+

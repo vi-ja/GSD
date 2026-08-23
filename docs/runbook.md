@@ -1,4 +1,4 @@
-# GSD Runbook
+﻿# DevFlow Runbook
 
 > Operational procedures for debugging, validation, and recovery.
 
@@ -239,7 +239,7 @@ Before reading any file:
 **Cause:** Planning lock prevents implementation
 
 **Fix:**
-1. Open `.gsd/SPEC.md`
+1. Open `.devflow/SPEC.md`
 2. Complete all required sections
 3. Change status to `Status: FINALIZED`
 4. Retry command
@@ -294,3 +294,4 @@ git diff --staged
 
 *See PROJECT_RULES.md for canonical rules.*
 *See docs/model-selection-playbook.md for model guidance.*
+

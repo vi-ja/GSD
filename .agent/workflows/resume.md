@@ -1,4 +1,4 @@
----
+﻿---
 description: Restore context from previous session
 ---
 
@@ -12,7 +12,7 @@ Start a new session with full context from where we left off.
 
 ## 1. Load Saved State
 
-Read `.gsd/STATE.md` completely.
+Read `.devflow/STATE.md` completely.
 
 ---
 
@@ -20,7 +20,7 @@ Read `.gsd/STATE.md` completely.
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► RESUMING SESSION
+ DevFlow ► RESUMING SESSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 LAST POSITION
@@ -56,7 +56,7 @@ NEXT STEPS (from last session)
 
 ## 3. Load Recent Journal
 
-Show last entry from `.gsd/JOURNAL.md`:
+Show last entry from `.devflow/JOURNAL.md`:
 - What was accomplished
 - Handoff notes
 - Any issues encountered
@@ -84,7 +84,7 @@ Review before proceeding.
 
 ## 5. Update State
 
-Mark session as active in `.gsd/STATE.md`:
+Mark session as active in `.devflow/STATE.md`:
 ```markdown
 **Status**: Active (resumed {timestamp})
 ```
@@ -129,3 +129,4 @@ A resumed session has advantages:
 
 Often the first thing a fresh context sees is the obvious solution that a tired context missed.
 </fresh_context_advantage>
+

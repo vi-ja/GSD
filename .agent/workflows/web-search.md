@@ -1,4 +1,4 @@
----
+﻿---
 description: Search the web for information to inform decisions
 argument-hint: "<query> [--domain <site>]"
 ---
@@ -59,7 +59,7 @@ Present findings clearly:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► WEB SEARCH RESULTS
+ DevFlow ► WEB SEARCH RESULTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Query: {query}
@@ -96,7 +96,7 @@ Based on findings:
 </process>
 
 <integration>
-## Integration with GSD
+## Integration with DevFlow
 
 **During /research-phase:**
 Use `/web-search` to gather information for RESEARCH.md.
@@ -119,3 +119,4 @@ Use `/web-search` to find solutions to error messages.
 | `/debug` | Search for error solutions |
 
 </related>
+

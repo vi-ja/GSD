@@ -1,4 +1,4 @@
----
+﻿---
 description: The Strategist — Decompose requirements into executable phases in ROADMAP.md
 argument-hint: "[phase] [--research] [--skip-research] [--gaps]"
 ---
@@ -6,7 +6,7 @@ argument-hint: "[phase] [--research] [--skip-research] [--gaps]"
 # /plan Workflow
 
 <role>
-You are a GSD planner orchestrator. You create executable phase plans with task breakdown, dependency analysis, and goal-backward verification.
+You are a DevFlow planner orchestrator. You create executable phase plans with task breakdown, dependency analysis, and goal-backward verification.
 
 **Core responsibilities:**
 - Parse arguments and validate phase
@@ -21,9 +21,9 @@ Create executable phase prompts (PLAN.md files) for a roadmap phase with integra
 
 **Default flow:** Research (if needed) → Plan → Verify → Done
 
-**Why subagents:** Research and planning are the two heaviest context consumers in GSD —
+**Why subagents:** Research and planning are the two heaviest context consumers in DevFlow —
 research reads the codebase, planning reads the spec, roadmap, and research on top of it.
-Both run in `gsd-researcher` / `gsd-planner` subagents so the orchestrator keeps the budget
+Both run in `devflow-researcher` / `devflow-planner` subagents so the orchestrator keeps the budget
 it needs to run the rest of the phase. You see the flow between agents; you do not pay for
 their reading.
 
@@ -40,11 +40,11 @@ Requires Antigravity 2.0+ (`invoke_subagent`). Older versions run inline — see
 - `--gaps` — Gap closure mode (reads VERIFICATION.md, skips research)
 
 **Required files:**
-- `.gsd/SPEC.md` — Must be FINALIZED (Planning Lock)
-- `.gsd/ROADMAP.md` — Must have phases defined
+- `.devflow/SPEC.md` — Must be FINALIZED (Planning Lock)
+- `.devflow/ROADMAP.md` — Must have phases defined
 
 **Delegation protocol:** `.agents/skills/subagent-delegation/SKILL.md`
-**Subagents:** `.agents/agents/gsd-researcher.md`, `.agents/agents/gsd-planner.md`
+**Subagents:** `.agents/agents/devflow-researcher.md`, `.agents/agents/devflow-planner.md`
 </context>
 
 <philosophy>
@@ -98,7 +98,7 @@ Discovery is MANDATORY unless you can prove current context exists.
 **Level 1.5 — Discovery** (5-15 min)
 - Quick library/option comparison (A vs B)
 - Low-to-medium risk, focused question
-- Action: Create DISCOVERY.md using `.gsd/templates/discovery.md` template
+- Action: Create DISCOVERY.md using `.devflow/templates/discovery.md` template
 
 **Level 2 — Standard Research** (15-30 min)
 - Choosing between 2-3 options
@@ -121,7 +121,7 @@ Discovery is MANDATORY unless you can prove current context exists.
 **PowerShell:**
 ```powershell
 # Check SPEC.md exists and is finalized
-$spec = Get-Content ".gsd/SPEC.md" -Raw
+$spec = Get-Content ".devflow/SPEC.md" -Raw
 if ($spec -notmatch "FINALIZED") {
     Write-Error "SPEC.md must be FINALIZED before planning"
     exit
@@ -131,7 +131,7 @@ if ($spec -notmatch "FINALIZED") {
 **Bash:**
 ```bash
 # Check SPEC.md exists and is finalized
-if ! grep -q "FINALIZED" ".gsd/SPEC.md"; then
+if ! grep -q "FINALIZED" ".devflow/SPEC.md"; then
     echo "Error: SPEC.md must be FINALIZED before planning" >&2
     exit 1
 fi
@@ -157,12 +157,12 @@ Extract from $ARGUMENTS:
 
 **PowerShell:**
 ```powershell
-Select-String -Path ".gsd/ROADMAP.md" -Pattern "Phase $PHASE:"
+Select-String -Path ".devflow/ROADMAP.md" -Pattern "Phase $PHASE:"
 ```
 
 **Bash:**
 ```bash
-grep "Phase $PHASE:" ".gsd/ROADMAP.md"
+grep "Phase $PHASE:" ".devflow/ROADMAP.md"
 ```
 
 **If not found:** Error with available phases.
@@ -174,7 +174,7 @@ grep "Phase $PHASE:" ".gsd/ROADMAP.md"
 
 **PowerShell:**
 ```powershell
-$PHASE_DIR = ".gsd/phases/$PHASE"
+$PHASE_DIR = ".devflow/phases/$PHASE"
 if (-not (Test-Path $PHASE_DIR)) {
     New-Item -ItemType Directory -Path $PHASE_DIR
 }
@@ -182,7 +182,7 @@ if (-not (Test-Path $PHASE_DIR)) {
 
 **Bash:**
 ```bash
-PHASE_DIR=".gsd/phases/$PHASE"
+PHASE_DIR=".devflow/phases/$PHASE"
 mkdir -p "$PHASE_DIR"
 ```
 
@@ -214,11 +214,11 @@ test -f "$PHASE_DIR/RESEARCH.md"
 Display banner:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► RESEARCHING PHASE {N}
+ DevFlow ► RESEARCHING PHASE {N}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**Delegated mode** (`invoke_subagent` available): invoke `gsd-researcher` with workspace mode
+**Delegated mode** (`invoke_subagent` available): invoke `devflow-researcher` with workspace mode
 `share`:
 
 ```
@@ -229,7 +229,7 @@ questions:
   - {question 1}
   - {question 2}
 
-Write findings to .gsd/phases/{phase}/RESEARCH.md.
+Write findings to .devflow/phases/{phase}/RESEARCH.md.
 Return the compact digest from your Return Contract — nothing else.
 ```
 
@@ -245,19 +245,19 @@ create `$PHASE_DIR/RESEARCH.md` with findings.
 Display banner:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PLANNING PHASE {N}
+ DevFlow ► PLANNING PHASE {N}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**Delegated mode** (`invoke_subagent` available): invoke `gsd-planner` with workspace mode
+**Delegated mode** (`invoke_subagent` available): invoke `devflow-planner` with workspace mode
 `inherit`:
 
 ```
 phase: {N}
 mode: {standard|gaps}
-research_path: .gsd/phases/{phase}/RESEARCH.md   {omit if none}
+research_path: .devflow/phases/{phase}/RESEARCH.md   {omit if none}
 
-Write plans from .gsd/templates/PLAN.md. 2-3 tasks each, wave + depends_on in frontmatter.
+Write plans from .devflow/templates/PLAN.md. 2-3 tasks each, wave + depends_on in frontmatter.
 Self-check with plan-checker before returning.
 Return the compact index from your Return Contract — nothing else.
 ```
@@ -269,11 +269,11 @@ Steps 6a-6c below describe what the planner does; run them yourself only in inli
 
 ### 6a. Gather Context
 Load:
-- `.gsd/SPEC.md` — Requirements
-- `.gsd/REQUIREMENTS.md` — Formal requirements tracking (if exists)
-- `.gsd/ROADMAP.md` — Phase description
+- `.devflow/SPEC.md` — Requirements
+- `.devflow/REQUIREMENTS.md` — Formal requirements tracking (if exists)
+- `.devflow/ROADMAP.md` — Phase description
 - `$PHASE_DIR/RESEARCH.md` — If exists
-- `.gsd/ARCHITECTURE.md` — If exists
+- `.devflow/ARCHITECTURE.md` — If exists
 
 ### 6b. Decompose into Tasks
 For the phase goal:
@@ -299,8 +299,8 @@ wave: 1
 {What this plan delivers and why}
 
 ## Context
-- .gsd/SPEC.md
-- .gsd/ARCHITECTURE.md
+- .devflow/SPEC.md
+- .devflow/ARCHITECTURE.md
 - {relevant source files}
 
 ## Tasks
@@ -358,7 +358,7 @@ Tests must verify real behavior, not just pass. Reject plans with tests that:
 
 ## 8. Update State
 
-Update `.gsd/STATE.md`:
+Update `.devflow/STATE.md`:
 ```markdown
 ## Current Position
 - **Phase**: {N}
@@ -374,8 +374,8 @@ Update `.gsd/STATE.md`:
 ## 9. Commit Plans
 
 ```bash
-git add .gsd/phases/$PHASE/
-git add .gsd/STATE.md
+git add .devflow/phases/$PHASE/
+git add .devflow/STATE.md
 git commit -m "docs(phase-$PHASE): create execution plans"
 ```
 
@@ -389,7 +389,7 @@ git commit -m "docs(phase-$PHASE): create execution plans"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PHASE {N} PLANNED ✓
+ DevFlow ► PHASE {N} PLANNED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {X} plans created across {Y} waves
@@ -438,3 +438,4 @@ Plans:
 | `planner` | Detailed planning methodology |
 | `plan-checker` | Validates plans before execution |
 </related>
+

@@ -1,4 +1,4 @@
----
+﻿---
 description: Capture a todo item for later
 argument-hint: "<description> [--priority high|medium|low]"
 ---
@@ -16,7 +16,7 @@ Quickly capture an idea, task, or issue without interrupting current work flow.
 - `--priority high|medium|low` — Set priority (default: medium)
 
 **Output:**
-- `.gsd/TODO.md` — Accumulated todo items
+- `.devflow/TODO.md` — Accumulated todo items
 </context>
 
 <process>
@@ -32,7 +32,7 @@ Extract:
 ## 2. Ensure TODO.md Exists
 
 ```powershell
-if (-not (Test-Path ".gsd/TODO.md")) {
+if (-not (Test-Path ".devflow/TODO.md")) {
     # Create with header
 }
 ```
@@ -41,7 +41,7 @@ if (-not (Test-Path ".gsd/TODO.md")) {
 
 ## 3. Add Todo Item
 
-Append to `.gsd/TODO.md`:
+Append to `.devflow/TODO.md`:
 
 ```markdown
 - [ ] {description} `{priority}` — {date}
@@ -53,7 +53,7 @@ Append to `.gsd/TODO.md`:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► TODO ADDED ✓
+ DevFlow ► TODO ADDED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {description}
@@ -67,3 +67,4 @@ Priority: {priority}
 ```
 
 </process>
+

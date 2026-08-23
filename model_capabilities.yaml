@@ -1,6 +1,6 @@
-# Model Capabilities Registry
+﻿# Model Capabilities Registry
 #
-# This file is OPTIONAL. GSD works without it.
+# This file is OPTIONAL. DevFlow works without it.
 # If present, it provides guidance for model selection.
 #
 # Usage: Reference this file when choosing models by capability.
@@ -106,3 +106,4 @@ phase_recommendations:
 
 # IMPORTANT: This file is for guidance only.
 # Never fail a workflow because a specific model capability is missing.
+

@@ -1,6 +1,6 @@
-# GSD Methodology — Mission Control Rules
+﻿# DevFlow Methodology — Mission Control Rules
 
-> **Get Shit Done**: A spec-driven, context-engineered development methodology.
+> **DevFlow**: A spec-driven, context-engineered development methodology.
 > 
 > These rules enforce disciplined, high-quality autonomous development.
 
@@ -37,7 +37,7 @@ Before "Done"    → Empirical proof captured
 
 ## Workflow Integration
 
-These rules integrate with the GSD workflows:
+These rules integrate with the DevFlow workflows:
 
 | Workflow | Rules Enforced |
 |----------|----------------|
@@ -61,7 +61,8 @@ Key recommendations:
 
 ---
 
-*GSD Methodology adapted for Google Antigravity*
+*DevFlow Methodology adapted for Google Antigravity*
 *Canonical rules: [PROJECT_RULES.md](../PROJECT_RULES.md)*
-*Source: https://github.com/glittercowboy/get-shit-done*
+*Source: https://github.com/glittercowboy/devflow*
+
 

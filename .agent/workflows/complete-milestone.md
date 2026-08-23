@@ -1,4 +1,4 @@
----
+﻿---
 description: Mark current milestone as complete and archive
 ---
 
@@ -15,13 +15,13 @@ Finalize the current milestone, archive documentation, and prepare for next mile
 **PowerShell:**
 ```powershell
 # Check ROADMAP.md for incomplete phases
-Select-String -Path ".gsd/ROADMAP.md" -Pattern "Status.*Not Started|Status.*In Progress"
+Select-String -Path ".devflow/ROADMAP.md" -Pattern "Status.*Not Started|Status.*In Progress"
 ```
 
 **Bash:**
 ```bash
 # Check ROADMAP.md for incomplete phases
-grep -E "Status.*Not Started|Status.*In Progress" ".gsd/ROADMAP.md"
+grep -E "Status.*Not Started|Status.*In Progress" ".devflow/ROADMAP.md"
 ```
 
 **If incomplete phases found:**
@@ -44,7 +44,7 @@ Verify all must-haves from ROADMAP.md:
 
 ## 3. Generate Milestone Summary
 
-Create `.gsd/milestones/{name}-SUMMARY.md`:
+Create `.devflow/milestones/{name}-SUMMARY.md`:
 
 ```markdown
 # Milestone: {name}
@@ -76,31 +76,31 @@ Create `.gsd/milestones/{name}-SUMMARY.md`:
 **PowerShell:**
 ```powershell
 # Create milestone archive
-New-Item -ItemType Directory -Force ".gsd/milestones/{name}"
+New-Item -ItemType Directory -Force ".devflow/milestones/{name}"
 
 # Move phase-specific files
-Move-Item ".gsd/phases/*" ".gsd/milestones/{name}/"
+Move-Item ".devflow/phases/*" ".devflow/milestones/{name}/"
 
 # Archive decisions and journal (prevent monolithic growth across milestones)
-if (Test-Path ".gsd/DECISIONS.md") {
-    Copy-Item ".gsd/DECISIONS.md" ".gsd/milestones/{name}/DECISIONS.md"
+if (Test-Path ".devflow/DECISIONS.md") {
+    Copy-Item ".devflow/DECISIONS.md" ".devflow/milestones/{name}/DECISIONS.md"
 }
-if (Test-Path ".gsd/JOURNAL.md") {
-    Copy-Item ".gsd/JOURNAL.md" ".gsd/milestones/{name}/JOURNAL.md"
+if (Test-Path ".devflow/JOURNAL.md") {
+    Copy-Item ".devflow/JOURNAL.md" ".devflow/milestones/{name}/JOURNAL.md"
 }
 ```
 
 **Bash:**
 ```bash
 # Create milestone archive
-mkdir -p ".gsd/milestones/{name}"
+mkdir -p ".devflow/milestones/{name}"
 
 # Move phase-specific files
-mv .gsd/phases/* ".gsd/milestones/{name}/"
+mv .devflow/phases/* ".devflow/milestones/{name}/"
 
 # Archive decisions and journal (prevent monolithic growth across milestones)
-[ -f ".gsd/DECISIONS.md" ] && cp ".gsd/DECISIONS.md" ".gsd/milestones/{name}/DECISIONS.md"
-[ -f ".gsd/JOURNAL.md" ] && cp ".gsd/JOURNAL.md" ".gsd/milestones/{name}/JOURNAL.md"
+[ -f ".devflow/DECISIONS.md" ] && cp ".devflow/DECISIONS.md" ".devflow/milestones/{name}/DECISIONS.md"
+[ -f ".devflow/JOURNAL.md" ] && cp ".devflow/JOURNAL.md" ".devflow/milestones/{name}/JOURNAL.md"
 ```
 
 ---
@@ -115,7 +115,7 @@ Update STATE.md to show milestone complete.
 ```markdown
 # Decisions
 
-> Previous milestone decisions archived in `.gsd/milestones/{name}/DECISIONS.md`
+> Previous milestone decisions archived in `.devflow/milestones/{name}/DECISIONS.md`
 
 ---
 ```
@@ -125,7 +125,7 @@ Update STATE.md to show milestone complete.
 ```markdown
 # Journal
 
-> Previous milestone journal archived in `.gsd/milestones/{name}/JOURNAL.md`
+> Previous milestone journal archived in `.devflow/milestones/{name}/JOURNAL.md`
 
 ---
 ```
@@ -134,7 +134,7 @@ Update STATE.md to show milestone complete.
 
 ## 5c. Refresh Architecture
 
-Update `.gsd/ARCHITECTURE.md` to reflect the current state of the codebase after the milestone:
+Update `.devflow/ARCHITECTURE.md` to reflect the current state of the codebase after the milestone:
 
 1. **Scan the project** — identify new components, removed modules, changed dependencies
 2. **Update the architecture diagram** — reflect structural changes from this milestone
@@ -147,13 +147,13 @@ Update `.gsd/ARCHITECTURE.md` to reflect the current state of the codebase after
 
 ## 5d. Update Requirements
 
-If `.gsd/REQUIREMENTS.md` exists, mark completed requirements:
+If `.devflow/REQUIREMENTS.md` exists, mark completed requirements:
 
 1. Read each requirement's status
 2. Cross-reference with milestone deliverables and verification results
 3. Mark satisfied requirements as `Complete`
 4. Mark deferred items as `Deferred` with reason
-5. Archive the requirements snapshot into `.gsd/milestones/{name}/REQUIREMENTS.md`
+5. Archive the requirements snapshot into `.devflow/milestones/{name}/REQUIREMENTS.md`
 
 ---
 
@@ -171,7 +171,7 @@ git tag -a "{name}" -m "Milestone {name} complete"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► MILESTONE COMPLETE 🎉
+ DevFlow ► MILESTONE COMPLETE 🎉
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {name}
@@ -190,3 +190,4 @@ Tag: {name}
 ```
 
 </process>
+

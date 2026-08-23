@@ -1,4 +1,4 @@
----
+﻿---
 description: The Auditor — Validate work against spec with empirical evidence
 argument-hint: "<phase-number>"
 ---
@@ -6,7 +6,7 @@ argument-hint: "<phase-number>"
 # /verify Workflow
 
 <role>
-You are a GSD verifier. You validate implemented work against spec requirements using empirical evidence.
+You are a DevFlow verifier. You validate implemented work against spec requirements using empirical evidence.
 
 **Core principle:** No "trust me, it works." Every verification produces proof.
 
@@ -28,26 +28,26 @@ The verifier checks the CODEBASE, not SUMMARY claims.
 **Phase:** $ARGUMENTS (required — phase number to verify)
 
 **Required files:**
-- `.gsd/SPEC.md` — Original requirements
-- `.gsd/ROADMAP.md` — Phase definition with must-haves
-- `.gsd/phases/{phase}/*-SUMMARY.md` — What was implemented
+- `.devflow/SPEC.md` — Original requirements
+- `.devflow/ROADMAP.md` — Phase definition with must-haves
+- `.devflow/phases/{phase}/*-SUMMARY.md` — What was implemented
 
 **Delegation protocol:** `.agents/skills/subagent-delegation/SKILL.md`
-**Subagent:** `.agents/agents/gsd-verifier.md`
+**Subagent:** `.agents/agents/devflow-verifier.md`
 </context>
 
 <process>
 
 ## 0. Delegate to a Fresh Verifier
 
-**If `invoke_subagent` is available**, do not verify in this context. Invoke `gsd-verifier`
+**If `invoke_subagent` is available**, do not verify in this context. Invoke `devflow-verifier`
 with workspace mode `share`:
 
 ```
 phase: {N}
 
 Verify against the codebase, not the SUMMARY claims. Run every command.
-Write .gsd/phases/{phase}/VERIFICATION.md.
+Write .devflow/phases/{phase}/VERIFICATION.md.
 Return the compact verdict from your Return Contract — nothing else.
 ```
 
@@ -64,9 +64,9 @@ independent.
 ## 1. Load Verification Context
 
 Read:
-- Phase definition from `.gsd/ROADMAP.md`
-- Original requirements from `.gsd/SPEC.md`
-- All SUMMARY.md files from `.gsd/phases/{phase}/`
+- Phase definition from `.devflow/ROADMAP.md`
+- Original requirements from `.devflow/SPEC.md`
+- All SUMMARY.md files from `.devflow/phases/{phase}/`
 
 ---
 
@@ -119,7 +119,7 @@ For each must-have, record:
 
 ## 4. Create Verification Report
 
-Write `.gsd/phases/{phase}/VERIFICATION.md`:
+Write `.devflow/phases/{phase}/VERIFICATION.md`:
 
 ```markdown
 ---
@@ -161,7 +161,7 @@ verdict: PASS | FAIL | PARTIAL
 
 ### If PASS (all must-haves verified):
 
-Update `.gsd/STATE.md`:
+Update `.devflow/STATE.md`:
 ```markdown
 ## Current Position
 - **Phase**: {N} (verified)
@@ -171,7 +171,7 @@ Update `.gsd/STATE.md`:
 Output:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PHASE {N} VERIFIED ✓
+ DevFlow ► PHASE {N} VERIFIED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {X}/{X} must-haves verified
@@ -191,7 +191,7 @@ All requirements satisfied.
 
 **Create gap closure plans:**
 
-For each failed must-have, create a fix plan in `.gsd/phases/{phase}/`:
+For each failed must-have, create a fix plan in `.devflow/phases/{phase}/`:
 
 ```markdown
 ---
@@ -220,7 +220,7 @@ gap_closure: true
 Output:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PHASE {N} GAPS FOUND ⚠
+ DevFlow ► PHASE {N} GAPS FOUND ⚠
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {X}/{Y} must-haves verified
@@ -242,7 +242,7 @@ Gap closure plans created.
 ## 6. Commit Verification
 
 ```bash
-git add .gsd/phases/{phase}/VERIFICATION.md
+git add .devflow/phases/{phase}/VERIFICATION.md
 git commit -m "docs(phase-{N}): verification report"
 ```
 
@@ -287,3 +287,4 @@ Never accept these as verification:
 | `verifier` | Detailed verification methodology |
 | `empirical-validation` | Evidence requirements |
 </related>
+

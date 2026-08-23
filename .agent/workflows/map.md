@@ -1,11 +1,11 @@
----
+﻿---
 description: The Architect — Analyze codebase and update ARCHITECTURE.md and STACK.md
 ---
 
 # /map Workflow
 
 <role>
-You are a GSD codebase mapper. You analyze existing codebases to understand structure, patterns, and technical debt.
+You are a DevFlow codebase mapper. You analyze existing codebases to understand structure, patterns, and technical debt.
 
 **Core responsibilities:**
 - Scan project structure and identify components
@@ -25,28 +25,28 @@ This workflow should be run BEFORE `/plan` on brownfield projects to give the pl
 **No arguments required.** Operates on current project directory.
 
 **Outputs:**
-- `.gsd/ARCHITECTURE.md` — System design documentation
-- `.gsd/STACK.md` — Technology inventory
+- `.devflow/ARCHITECTURE.md` — System design documentation
+- `.devflow/STACK.md` — Technology inventory
 
 **Delegation protocol:** `.agents/skills/subagent-delegation/SKILL.md`
-**Subagent:** `.agents/agents/gsd-researcher.md`
+**Subagent:** `.agents/agents/devflow-researcher.md`
 </context>
 
 <process>
 
 ## 0. Delegate the Mapping
 
-**If `invoke_subagent` is available**, invoke `gsd-researcher` with workspace mode `share`:
+**If `invoke_subagent` is available**, invoke `devflow-researcher` with workspace mode `share`:
 
 ```
 mode: map
 
-Write .gsd/ARCHITECTURE.md and .gsd/STACK.md.
+Write .devflow/ARCHITECTURE.md and .devflow/STACK.md.
 Cite findings with file:line. Record what you could not determine.
 Return the compact digest from your Return Contract — nothing else.
 ```
 
-Mapping is the single most context-expensive workflow in GSD — it reads the whole project by
+Mapping is the single most context-expensive workflow in DevFlow — it reads the whole project by
 design. Running it inline means the codebase you just mapped is now competing for space with
 the phase you wanted to plan. Delegate it, then read the artifacts only when you need them.
 
@@ -79,7 +79,7 @@ indicators=("package.json" "requirements.txt" "Cargo.toml"
 Display banner:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► MAPPING CODEBASE
+ DevFlow ► MAPPING CODEBASE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -354,7 +354,7 @@ Identify gaps:
 
 ## 8. Update State
 
-Update `.gsd/STATE.md`:
+Update `.devflow/STATE.md`:
 ```markdown
 ## Last Session Summary
 Codebase mapping complete.
@@ -368,7 +368,7 @@ Codebase mapping complete.
 ## 9. Commit Documentation
 
 ```bash
-git add .gsd/ARCHITECTURE.md .gsd/STACK.md .gsd/STATE.md
+git add .devflow/ARCHITECTURE.md .devflow/STACK.md .devflow/STATE.md
 git commit -m "docs: map existing codebase"
 ```
 
@@ -382,7 +382,7 @@ git commit -m "docs: map existing codebase"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► CODEBASE MAPPED ✓
+ DevFlow ► CODEBASE MAPPED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Components: {N}
@@ -396,8 +396,8 @@ Technical debt: {J} items
 /plan — create execution plans with full context
 
 Files updated:
-• .gsd/ARCHITECTURE.md
-• .gsd/STACK.md
+• .devflow/ARCHITECTURE.md
+• .devflow/STACK.md
 
 ───────────────────────────────────────────────────────
 ```
@@ -417,3 +417,4 @@ Files updated:
 |-------|---------|
 | `codebase-mapper` | Detailed mapping methodology |
 </related>
+

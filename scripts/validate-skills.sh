@@ -1,12 +1,12 @@
-#!/bin/bash
-# GSD Skill Validation Script
+﻿#!/bin/bash
+# DevFlow Skill Validation Script
 # Validates all skill directories for required structure
 
 error_count=0
 skills_checked=0
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " GSD ► VALIDATING SKILLS"
+echo " DevFlow ► VALIDATING SKILLS"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
@@ -63,3 +63,4 @@ else
     echo "❌ Validation failed"
     exit 1
 fi
+

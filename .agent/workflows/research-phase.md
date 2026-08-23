@@ -1,4 +1,4 @@
----
+﻿---
 description: Deep technical research for a phase
 argument-hint: "<phase-number> [--level 1|2|3]"
 ---
@@ -26,7 +26,7 @@ Conduct technical research to inform planning decisions for a phase.
 
 ## 0. Delegate the Research
 
-**If `invoke_subagent` is available**, invoke `gsd-researcher` with workspace mode `share`:
+**If `invoke_subagent` is available**, invoke `devflow-researcher` with workspace mode `share`:
 
 ```
 mode: research
@@ -36,7 +36,7 @@ questions:
   - {question 1}
   - {question 2}
 
-Write .gsd/phases/{phase}/RESEARCH.md. Cite findings with file:line.
+Write .devflow/phases/{phase}/RESEARCH.md. Cite findings with file:line.
 Return the compact digest from your Return Contract — nothing else.
 ```
 
@@ -93,7 +93,7 @@ Based on discovery level:
 
 ## 4. Generate RESEARCH.md
 
-Create `.gsd/phases/{N}/RESEARCH.md`:
+Create `.devflow/phases/{N}/RESEARCH.md`:
 
 ```markdown
 ---
@@ -152,7 +152,7 @@ researched_at: {date}
 ## 5. Commit Research
 
 ```powershell
-git add .gsd/phases/{N}/RESEARCH.md
+git add .devflow/phases/{N}/RESEARCH.md
 git commit -m "docs(phase-{N}): research complete"
 ```
 
@@ -162,7 +162,7 @@ git commit -m "docs(phase-{N}): research complete"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► RESEARCH COMPLETE ✓
+ DevFlow ► RESEARCH COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Phase {N}: {name}
@@ -182,3 +182,4 @@ Key findings:
 ```
 
 </process>
+

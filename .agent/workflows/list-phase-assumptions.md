@@ -1,4 +1,4 @@
----
+﻿---
 description: List assumptions made during phase planning
 argument-hint: "<phase-number>"
 ---
@@ -14,7 +14,7 @@ Surface and document assumptions made during phase planning that should be valid
 ## 1. Load Phase Plans
 
 ```powershell
-Get-ChildItem ".gsd/phases/{N}/*-PLAN.md"
+Get-ChildItem ".devflow/phases/{N}/*-PLAN.md"
 ```
 
 ---
@@ -46,7 +46,7 @@ Scan plans for:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PHASE {N} ASSUMPTIONS
+ DevFlow ► PHASE {N} ASSUMPTIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 TECHNICAL
@@ -80,3 +80,4 @@ Ask if user wants to:
 - Accept and proceed
 
 </process>
+

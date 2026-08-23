@@ -1,12 +1,12 @@
----
+﻿---
 name: planner
 description: Creates executable phase plans with task breakdown, dependency analysis, and goal-backward verification
 ---
 
-# GSD Planner Agent
+# DevFlow Planner Agent
 
 <role>
-You are a GSD planner. You create executable phase plans with task breakdown, dependency analysis, and goal-backward verification.
+You are a DevFlow planner. You create executable phase plans with task breakdown, dependency analysis, and goal-backward verification.
 
 **Core responsibilities:**
 - Decompose phases into parallel-optimized plans with 2-3 tasks each
@@ -232,8 +232,8 @@ Output: {What artifacts will be created}
 
 <context>
 Load for context:
-- .gsd/SPEC.md
-- .gsd/ARCHITECTURE.md (if exists)
+- .devflow/SPEC.md
+- .devflow/ARCHITECTURE.md (if exists)
 - {relevant source files}
 </context>
 
@@ -457,15 +457,15 @@ OPTIONS: [choices if applicable]
 ```yaml
 # Bad: Every plan refs previous
 context:
-  - .gsd/phases/1/01-SUMMARY.md  # Plan 2 refs 1
-  - .gsd/phases/1/02-SUMMARY.md  # Plan 3 refs 2
+  - .devflow/phases/1/01-SUMMARY.md  # Plan 2 refs 1
+  - .devflow/phases/1/02-SUMMARY.md  # Plan 3 refs 2
 ```
 
 ### ✅ Minimal Context
 ```yaml
 # Good: Only ref when truly needed
 context:
-  - .gsd/SPEC.md
+  - .devflow/SPEC.md
   - src/types.ts  # Actually needed
 ```
 
@@ -483,3 +483,4 @@ context:
 - [ ] Must-haves are derived from phase goal
 - [ ] Discovery level assessed (0-3)
 - [ ] TDD considered for complex logic
+

@@ -1,4 +1,4 @@
----
+﻿---
 description: Systematic debugging with persistent state
 argument-hint: "[description of issue]"
 ---
@@ -6,7 +6,7 @@ argument-hint: "[description of issue]"
 # /debug Workflow
 
 <role>
-You are a GSD debugger orchestrator. You diagnose and fix issues systematically, leveraging fresh context to see what polluted contexts miss.
+You are a DevFlow debugger orchestrator. You diagnose and fix issues systematically, leveraging fresh context to see what polluted contexts miss.
 </role>
 
 <objective>
@@ -19,7 +19,7 @@ Systematically diagnose an issue using hypothesis-driven debugging, with persist
 **Skill reference:** `.agents/skills/debugger/SKILL.md`
 
 **Delegation protocol:** `.agents/skills/subagent-delegation/SKILL.md`
-**Subagent:** `.agents/agents/gsd-debugger.md`
+**Subagent:** `.agents/agents/devflow-debugger.md`
 </context>
 
 <process>
@@ -29,12 +29,12 @@ Systematically diagnose an issue using hypothesis-driven debugging, with persist
 Check for existing debug state:
 **PowerShell:**
 ```powershell
-Test-Path ".gsd/DEBUG.md"
+Test-Path ".devflow/DEBUG.md"
 ```
 
 **Bash:**
 ```bash
-test -f ".gsd/DEBUG.md"
+test -f ".devflow/DEBUG.md"
 ```
 
 If exists, load previous attempts. If not, create new session.
@@ -42,7 +42,7 @@ If exists, load previous attempts. If not, create new session.
 Display banner:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► DEBUG SESSION
+ DevFlow ► DEBUG SESSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Issue: {description}
@@ -52,14 +52,14 @@ Issue: {description}
 
 ## 1b. Delegate to a Fresh Debugger
 
-**If `invoke_subagent` is available**, invoke `gsd-debugger` with workspace mode `inherit`:
+**If `invoke_subagent` is available**, invoke `devflow-debugger` with workspace mode `inherit`:
 
 ```
 issue: {description}
-debug_state: .gsd/DEBUG.md   {omit if this is a new session}
+debug_state: .devflow/DEBUG.md   {omit if this is a new session}
 
 Reproduce before diagnosing. One hypothesis at a time. 3 strikes then escalate.
-Append attempts to .gsd/DEBUG.md as you go.
+Append attempts to .devflow/DEBUG.md as you go.
 Return the compact result from your Return Contract — nothing else.
 ```
 
@@ -76,7 +76,7 @@ Steps 2-7 describe what the debugger does. Run them yourself only in inline mode
 
 ## 2. Document Symptom
 
-Create/update `.gsd/DEBUG.md`:
+Create/update `.devflow/DEBUG.md`:
 
 ```markdown
 # Debug Session: {Issue ID}
@@ -212,7 +212,7 @@ Update STATE.md with resolution.
 **If Resolved:**
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► BUG FIXED ✓
+ DevFlow ► BUG FIXED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Root cause: {what was wrong}
@@ -226,11 +226,11 @@ Committed: {hash}
 **If Stuck After 3 Attempts:**
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► DEBUG PAUSED ⏸
+ DevFlow ► DEBUG PAUSED ⏸
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 3 attempts exhausted on current approach.
-State saved to .gsd/DEBUG.md
+State saved to .devflow/DEBUG.md
 
 ───────────────────────────────────────────────────────
 
@@ -260,3 +260,4 @@ Options:
 | `debugger` | Detailed debugging methodology |
 | `context-health-monitor` | 3-strike rule |
 </related>
+

@@ -1,4 +1,4 @@
----
+﻿---
 description: Create and manage a time-boxed sprint for quick focused work
 argument-hint: "[new|status|close] [sprint-name]"
 ---
@@ -34,7 +34,7 @@ Ask for:
 
 ### Create Sprint File
 
-Create `.gsd/SPRINT.md` using the template from `.gsd/templates/sprint.md`:
+Create `.devflow/SPRINT.md` using the template from `.devflow/templates/sprint.md`:
 
 ```markdown
 # Sprint {N} — {Sprint Name}
@@ -79,7 +79,7 @@ Create `.gsd/SPRINT.md` using the template from `.gsd/templates/sprint.md`:
 ### Commit
 
 ```bash
-git add .gsd/SPRINT.md .gsd/STATE.md
+git add .devflow/SPRINT.md .devflow/STATE.md
 git commit -m "docs: create sprint {name}"
 ```
 
@@ -87,11 +87,11 @@ git commit -m "docs: create sprint {name}"
 
 ## 2b. Action: Status
 
-Read `.gsd/SPRINT.md` and display:
+Read `.devflow/SPRINT.md` and display:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► SPRINT STATUS
+ DevFlow ► SPRINT STATUS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Sprint: {name}
@@ -113,7 +113,7 @@ Check all tasks are done or explicitly deferred.
 
 ### Generate Retrospective
 
-Append to `.gsd/SPRINT.md`:
+Append to `.devflow/SPRINT.md`:
 
 ```markdown
 ## Retrospective ({date})
@@ -132,14 +132,14 @@ Append to `.gsd/SPRINT.md`:
 
 **PowerShell:**
 ```powershell
-New-Item -ItemType Directory -Force ".gsd/sprints"
-Move-Item ".gsd/SPRINT.md" ".gsd/sprints/{name}-SPRINT.md"
+New-Item -ItemType Directory -Force ".devflow/sprints"
+Move-Item ".devflow/SPRINT.md" ".devflow/sprints/{name}-SPRINT.md"
 ```
 
 **Bash:**
 ```bash
-mkdir -p .gsd/sprints
-mv .gsd/SPRINT.md ".gsd/sprints/{name}-SPRINT.md"
+mkdir -p .devflow/sprints
+mv .devflow/SPRINT.md ".devflow/sprints/{name}-SPRINT.md"
 ```
 
 ### Update STATE.md
@@ -149,7 +149,7 @@ Restore previous milestone position or mark as idle.
 ### Commit
 
 ```bash
-git add .gsd/sprints/ .gsd/STATE.md
+git add .devflow/sprints/ .devflow/STATE.md
 git commit -m "docs: close sprint {name}"
 ```
 
@@ -157,7 +157,7 @@ git commit -m "docs: close sprint {name}"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► SPRINT CLOSED ✓
+ DevFlow ► SPRINT CLOSED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Sprint: {name}
@@ -190,3 +190,4 @@ Tasks completed: {N}/{total}
 |----------|---------|
 | `sprint.md` | Sprint document structure |
 </related>
+

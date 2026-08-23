@@ -1,5 +1,5 @@
-#!/bin/bash
-# GSD Workflow Validation Script
+﻿#!/bin/bash
+# DevFlow Workflow Validation Script
 # Validates all workflow files for required structure
 
 error_count=0
@@ -7,7 +7,7 @@ warning_count=0
 workflows_checked=0
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " GSD ► VALIDATING WORKFLOWS"
+echo " DevFlow ► VALIDATING WORKFLOWS"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
@@ -56,3 +56,4 @@ else
     echo "❌ Validation failed"
     exit 1
 fi
+

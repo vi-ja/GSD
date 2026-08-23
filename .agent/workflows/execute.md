@@ -1,4 +1,4 @@
----
+﻿---
 description: The Engineer — Execute a specific phase with focused context
 argument-hint: "<phase-number> [--gaps-only]"
 ---
@@ -6,13 +6,13 @@ argument-hint: "<phase-number> [--gaps-only]"
 # /execute Workflow
 
 <role>
-You are a GSD executor orchestrator. You do not execute plans yourself — you delegate each
-plan to a `gsd-executor` subagent and route the results.
+You are a DevFlow executor orchestrator. You do not execute plans yourself — you delegate each
+plan to a `devflow-executor` subagent and route the results.
 
 **Core responsibilities:**
 - Validate phase exists and has plans
 - Discover and group plans by execution wave
-- Delegate each plan to a `gsd-executor` subagent with a clean context
+- Delegate each plan to a `devflow-executor` subagent with a clean context
 - Verify phase goal after all plans complete
 - Update roadmap and state on completion
 </role>
@@ -34,12 +34,12 @@ read compact results, verify against phase goal.
 - `--inline` — Force inline execution without subagents (debugging escape hatch)
 
 **Required files:**
-- `.gsd/ROADMAP.md` — Phase definitions
-- `.gsd/STATE.md` — Current position
-- `.gsd/phases/{phase}/` — Phase directory with PLAN.md files
+- `.devflow/ROADMAP.md` — Phase definitions
+- `.devflow/STATE.md` — Current position
+- `.devflow/phases/{phase}/` — Phase directory with PLAN.md files
 
 **Delegation protocol:** `.agents/skills/subagent-delegation/SKILL.md`
-**Subagent:** `.agents/agents/gsd-executor.md`
+**Subagent:** `.agents/agents/devflow-executor.md`
 </context>
 
 <process>
@@ -48,14 +48,14 @@ read compact results, verify against phase goal.
 
 **PowerShell:**
 ```powershell
-Test-Path ".gsd/ROADMAP.md"
-Test-Path ".gsd/STATE.md"
+Test-Path ".devflow/ROADMAP.md"
+Test-Path ".devflow/STATE.md"
 ```
 
 **Bash:**
 ```bash
-test -f ".gsd/ROADMAP.md"
-test -f ".gsd/STATE.md"
+test -f ".devflow/ROADMAP.md"
+test -f ".devflow/STATE.md"
 ```
 
 **If not found:** Error — user should run `/plan` first.
@@ -67,13 +67,13 @@ test -f ".gsd/STATE.md"
 **PowerShell:**
 ```powershell
 # Check phase exists in roadmap
-Select-String -Path ".gsd/ROADMAP.md" -Pattern "Phase $PHASE:"
+Select-String -Path ".devflow/ROADMAP.md" -Pattern "Phase $PHASE:"
 ```
 
 **Bash:**
 ```bash
 # Check phase exists in roadmap
-grep "Phase $PHASE:" ".gsd/ROADMAP.md"
+grep "Phase $PHASE:" ".devflow/ROADMAP.md"
 ```
 
 **If not found:** Error with available phases from ROADMAP.md.
@@ -84,7 +84,7 @@ grep "Phase $PHASE:" ".gsd/ROADMAP.md"
 
 **PowerShell:**
 ```powershell
-$PHASE_DIR = ".gsd/phases/$PHASE"
+$PHASE_DIR = ".devflow/phases/$PHASE"
 if (-not (Test-Path $PHASE_DIR)) {
     New-Item -ItemType Directory -Path $PHASE_DIR
 }
@@ -92,7 +92,7 @@ if (-not (Test-Path $PHASE_DIR)) {
 
 **Bash:**
 ```bash
-PHASE_DIR=".gsd/phases/$PHASE"
+PHASE_DIR=".devflow/phases/$PHASE"
 mkdir -p "$PHASE_DIR"
 ```
 
@@ -147,7 +147,7 @@ wave: 1
 Display wave structure:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► EXECUTING PHASE {N}
+ DevFlow ► EXECUTING PHASE {N}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Wave 1: {plan-1}, {plan-2}
@@ -173,7 +173,7 @@ Look for `invoke_subagent` in your available tools.
 
 ### 6b. Delegate Each Plan in the Wave
 
-For each wave in order, invoke one `gsd-executor` subagent per plan.
+For each wave in order, invoke one `devflow-executor` subagent per plan.
 
 **Workspace mode:**
 
@@ -185,16 +185,16 @@ For each wave in order, invoke one `gsd-executor` subagent per plan.
 **Invocation prompt** — paths only, never file contents:
 
 ```
-plan_path: .gsd/phases/{phase}/{n}-PLAN.md
+plan_path: .devflow/phases/{phase}/{n}-PLAN.md
 phase: {N}
 completed_tasks: {only on continuation, from a prior checkpoint}
 
-Read .gsd/STATE.md and PROJECT_RULES.md first.
+Read .devflow/STATE.md and PROJECT_RULES.md first.
 Execute this plan only. Commit per task. Write your SUMMARY.md.
 Return the compact block from your Return Contract — nothing else.
 ```
 
-Constraints from `.gsd/STATE.md` that bound the work (accepted decisions, known blockers)
+Constraints from `.devflow/STATE.md` that bound the work (accepted decisions, known blockers)
 go in the prompt as plain lines. The subagent cannot see this conversation.
 
 See `.agents/skills/subagent-delegation/SKILL.md` for the full protocol.
@@ -265,7 +265,7 @@ Then, for **one plan only** — never a full wave:
 
 After all waves complete.
 
-**Delegated mode:** invoke `gsd-verifier` with `phase: {N}` and workspace mode `share`. It
+**Delegated mode:** invoke `devflow-verifier` with `phase: {N}` and workspace mode `share`. It
 returns a compact verdict. Skip to "Route by verdict" — the orchestrator does not re-verify.
 
 The verifier's independence is the point: it never saw the implementation, so it cannot
@@ -326,7 +326,7 @@ Phase {N} executed successfully. {X} plans, {Y} tasks completed.
 ## 9. Commit Phase Completion
 
 ```bash
-git add .gsd/ROADMAP.md .gsd/STATE.md .gsd/REQUIREMENTS.md
+git add .devflow/ROADMAP.md .devflow/STATE.md .devflow/REQUIREMENTS.md
 git commit -m "docs(phase-{N}): complete {phase-name}"
 ```
 
@@ -343,7 +343,7 @@ Output based on status:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PHASE {N} COMPLETE ✓
+ DevFlow ► PHASE {N} COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {X} plans executed
@@ -364,7 +364,7 @@ Phase {N+1}: {Name}
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► MILESTONE COMPLETE 🎉
+ DevFlow ► MILESTONE COMPLETE 🎉
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 All phases completed and verified.
@@ -376,7 +376,7 @@ All phases completed and verified.
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PHASE {N} GAPS FOUND ⚠
+ DevFlow ► PHASE {N} GAPS FOUND ⚠
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {X}/{Y} must-haves verified
@@ -391,7 +391,7 @@ Gap closure plans created.
 <context_hygiene>
 **After 3 failed debugging attempts:**
 1. Stop current approach
-2. Document to `.gsd/STATE.md` what was tried
+2. Document to `.devflow/STATE.md` what was tried
 3. Recommend `/pause` for fresh session
 </context_hygiene>
 
@@ -413,3 +413,4 @@ Gap closure plans created.
 | `context-health-monitor` | 3-strike rule enforcement |
 | `empirical-validation` | Verification requirements |
 </related>
+

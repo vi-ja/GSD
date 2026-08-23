@@ -1,13 +1,14 @@
-# GSD State Files
-.gsd/ARCHITECTURE.md
-.gsd/DECISIONS.md
-.gsd/JOURNAL.md
-.gsd/ROADMAP.md
-.gsd/SPEC.md
-.gsd/STACK.md
-.gsd/STATE.md
-.gsd/TODO.md
+﻿# DevFlow State Files
+.devflow/ARCHITECTURE.md
+.devflow/DECISIONS.md
+.devflow/JOURNAL.md
+.devflow/ROADMAP.md
+.devflow/SPEC.md
+.devflow/STACK.md
+.devflow/STATE.md
+.devflow/TODO.md
 
 # OS generated
 Thumbs.db
 .DS_Store
+

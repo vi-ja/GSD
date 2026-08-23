@@ -1,14 +1,14 @@
-<div align="center">
+﻿<div align="center">
 
 <picture>
-  <img src="assets/banner.svg" alt="Get Shit Done for Antigravity" width="100%"/>
+  <img src="assets/banner.svg" alt="DevFlow for Antigravity" width="100%"/>
 </picture>
 
 <br/>
 
 [![Version](https://img.shields.io/badge/version-1.6.0-00C853?style=flat-square)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-2196F3?style=flat-square)](LICENSE)
-[![Based on GSD](https://img.shields.io/badge/based%20on-GSD-7B2D8E?style=flat-square)](https://github.com/glittercowboy/get-shit-done)
+[![Based on DevFlow](https://img.shields.io/badge/based%20on-DevFlow-7B2D8E?style=flat-square)](https://github.com/glittercowboy/devflow)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20Mac-FF6D00?style=flat-square)](#-cross-platform-support)
 [![Model Agnostic](https://img.shields.io/badge/models-any%20LLM-E91E63?style=flat-square)](#-multi-model-support)
 
@@ -16,7 +16,7 @@
 
 **Stop vibecoding. Start shipping.**
 
-*Describe your idea → GSD extracts everything the AI needs → Watch it build correctly.*
+*Describe your idea → DevFlow extracts everything the AI needs → Watch it build correctly.*
 
 <br/>
 
@@ -32,13 +32,13 @@
 
 You describe what you want, AI generates code, and you get **inconsistent garbage** that falls apart at scale.
 
-GSD fixes that. It's the **context engineering layer** that makes AI coding reliable.
+DevFlow fixes that. It's the **context engineering layer** that makes AI coding reliable.
 
 <table>
 <tr>
 <td width="50%">
 
-### ❌ Without GSD
+### ❌ Without DevFlow
 ```
 "Add a feature"
     → Inconsistent code
@@ -50,7 +50,7 @@ GSD fixes that. It's the **context engineering layer** that makes AI coding reli
 </td>
 <td width="50%">
 
-### ✅ With GSD
+### ✅ With DevFlow
 ```
 "Add a feature"
     → SPEC
@@ -82,7 +82,7 @@ GSD fixes that. It's the **context engineering layer** that makes AI coding reli
 ## ⚡ Getting Started
 
 > **Requirements:** Antigravity **2.0+** for [subagent delegation](#-subagent-delegation).
-> GSD runs on 1.x too — every command works, but everything shares one context window and
+> DevFlow runs on 1.x too — every command works, but everything shares one context window and
 > workflows will tell you so.
 
 <details>
@@ -92,23 +92,23 @@ GSD fixes that. It's the **context engineering layer** that makes AI coding reli
 # Open your project
 cd your-project
 
-# Clone the GSD template
-git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-template
+# Clone the DevFlow template
+git clone https://github.com/toonight/devflow-for-antigravity.git devflow-template
 
 # Copy to your project
-Copy-Item -Recurse gsd-template\.agent .\
-Copy-Item -Recurse gsd-template\.agents .\
-Copy-Item -Recurse gsd-template\.gemini .\
-Copy-Item -Recurse gsd-template\.gsd .\
-Copy-Item -Recurse gsd-template\adapters .\
-Copy-Item -Recurse gsd-template\docs .\
-Copy-Item -Recurse gsd-template\scripts .\
-Copy-Item -Force gsd-template\PROJECT_RULES.md .\
-Copy-Item -Force gsd-template\GSD-STYLE.md .\
-Copy-Item -Force gsd-template\model_capabilities.yaml .\
+Copy-Item -Recurse devflow-template\.agent .\
+Copy-Item -Recurse devflow-template\.agents .\
+Copy-Item -Recurse devflow-template\.gemini .\
+Copy-Item -Recurse devflow-template\.devflow .\
+Copy-Item -Recurse devflow-template\adapters .\
+Copy-Item -Recurse devflow-template\docs .\
+Copy-Item -Recurse devflow-template\scripts .\
+Copy-Item -Force devflow-template\PROJECT_RULES.md .\
+Copy-Item -Force devflow-template\DevFlow-STYLE.md .\
+Copy-Item -Force devflow-template\model_capabilities.yaml .\
 
 # Clean up
-Remove-Item -Recurse -Force gsd-template
+Remove-Item -Recurse -Force devflow-template
 ```
 
 </details>
@@ -120,23 +120,23 @@ Remove-Item -Recurse -Force gsd-template
 # Open your project
 cd your-project
 
-# Clone the GSD template
-git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-template
+# Clone the DevFlow template
+git clone https://github.com/toonight/devflow-for-antigravity.git devflow-template
 
 # Copy to your project
-cp -r gsd-template/.agent ./
-cp -r gsd-template/.agents ./
-cp -r gsd-template/.gemini ./
-cp -r gsd-template/.gsd ./
-cp -r gsd-template/adapters ./
-cp -r gsd-template/docs ./
-cp -r gsd-template/scripts ./
-cp gsd-template/PROJECT_RULES.md ./
-cp gsd-template/GSD-STYLE.md ./
-cp gsd-template/model_capabilities.yaml ./
+cp -r devflow-template/.agent ./
+cp -r devflow-template/.agents ./
+cp -r devflow-template/.gemini ./
+cp -r devflow-template/.devflow ./
+cp -r devflow-template/adapters ./
+cp -r devflow-template/docs ./
+cp -r devflow-template/scripts ./
+cp devflow-template/PROJECT_RULES.md ./
+cp devflow-template/DevFlow-STYLE.md ./
+cp devflow-template/model_capabilities.yaml ./
 
 # Clean up
-rm -rf gsd-template
+rm -rf devflow-template
 ```
 
 </details>
@@ -186,7 +186,7 @@ graph LR
 
 ### 📦 Context Engineering
 
-The AI is incredibly powerful **if** you give it the context it needs. Most people don't. GSD handles it for you:
+The AI is incredibly powerful **if** you give it the context it needs. Most people don't. DevFlow handles it for you:
 
 | File | Role | Icon |
 |------|------|:----:|
@@ -201,26 +201,26 @@ The AI is incredibly powerful **if** you give it the context it needs. Most peop
 
 ### 🧬 Subagent Delegation
 
-Context engineering only works if something actually protects the context. In GSD, that
+Context engineering only works if something actually protects the context. In DevFlow, that
 something is **native Antigravity subagents**: workflows orchestrate and route, subagents do
 the work — each on its own clean context window.
 
 ```
 /execute 2
     │
-    ├─ wave 1 ──► gsd-executor  (plan 1)  ──► SUMMARY.md ──┐
-    │             gsd-executor  (plan 2)  ──► SUMMARY.md ──┤ compact
+    ├─ wave 1 ──► devflow-executor  (plan 1)  ──► SUMMARY.md ──┐
+    │             devflow-executor  (plan 2)  ──► SUMMARY.md ──┤ compact
     │                                                       │ results
-    └─ verify ──► gsd-verifier            ──► VERIFICATION ─┘ only
+    └─ verify ──► devflow-verifier            ──► VERIFICATION ─┘ only
 ```
 
 | Subagent | Runs | Why it's isolated |
 |----------|------|-------------------|
-| 🧠 `gsd-planner` | `/plan` | Planning reads spec + roadmap + research |
-| ⚙️ `gsd-executor` | `/execute`, one per plan | Every plan starts at peak quality |
-| 🔬 `gsd-verifier` | `/verify` | It never saw the code written — so it can audit it |
-| 🔎 `gsd-researcher` | `/map`, `/research-phase` | Exploration is the biggest context cost |
-| 🐛 `gsd-debugger` | `/debug` | A context that failed 3× repeats its own hypotheses |
+| 🧠 `devflow-planner` | `/plan` | Planning reads spec + roadmap + research |
+| ⚙️ `devflow-executor` | `/execute`, one per plan | Every plan starts at peak quality |
+| 🔬 `devflow-verifier` | `/verify` | It never saw the code written — so it can audit it |
+| 🔎 `devflow-researcher` | `/map`, `/research-phase` | Exploration is the biggest context cost |
+| 🐛 `devflow-debugger` | `/debug` | A context that failed 3× repeats its own hypotheses |
 
 Subagents inherit **no** conversation history and return a compact result block — status,
 artifact paths, verdict. The artifacts land on disk; only the block reaches the orchestrator.
@@ -228,8 +228,8 @@ artifact paths, verdict. The artifacts land on disk; only the block reaches the 
 > **Requires Antigravity 2.0+** (`invoke_subagent`). On 1.x, workflows announce degraded mode
 > and run inline — one plan per session, `/pause` between plans.
 >
-> **No Ultra plan required.** GSD uses plain subagents, which are not plan-gated — only
-> *Multi-Agent Teamwork* (`/teamwork-preview`, Agent Teams) is Ultra-exclusive, and GSD does
+> **No Ultra plan required.** DevFlow uses plain subagents, which are not plan-gated — only
+> *Multi-Agent Teamwork* (`/teamwork-preview`, Agent Teams) is Ultra-exclusive, and DevFlow does
 > not use it. Free and Pro tiers differ in rate limits and model access, not in access to
 > delegation.
 >
@@ -284,7 +284,7 @@ graph TD
     style T6 fill:#7B2D8E,color:#fff,stroke:none
 ```
 
-Each plan runs in its own `gsd-executor` subagent, so each executor gets **fresh context** and
+Each plan runs in its own `devflow-executor` subagent, so each executor gets **fresh context** and
 your main session stays fast. Plans sharing a wave run in isolated git worktrees
 (`branch` mode) and merge when the wave closes.
 
@@ -332,7 +332,7 @@ No "trust me, it works." Every verification produces evidence:
 
 | Command | Purpose |
 |---------|---------|
-| `/install` | 📦 Install GSD from GitHub |
+| `/install` | 📦 Install DevFlow from GitHub |
 | `/new-project` | 🆕 Deep questioning → `SPEC.md` |
 | `/new-milestone` | 🏁 Create milestone with phases |
 | `/complete-milestone` | 🎉 Archive completed milestone |
@@ -374,8 +374,8 @@ No "trust me, it works." Every verification produces evidence:
 |---------|---------|
 | `/help` | ❓ Show all available commands |
 | `/web-search` | 🌐 Search the web for decisions |
-| `/whats-new` | 📢 Show recent GSD changes |
-| `/update` | ⬆️ Update GSD to latest version |
+| `/whats-new` | 📢 Show recent DevFlow changes |
+| `/update` | ⬆️ Update DevFlow to latest version |
 
 ---
 
@@ -392,7 +392,7 @@ No "trust me, it works." Every verification produces evidence:
 ```
 
 > [!IMPORTANT]
-> GSD forces **planning before coding**. The AI can't write code until `SPEC.md` says `FINALIZED`. This prevents building the wrong thing.
+> DevFlow forces **planning before coding**. The AI can't write code until `SPEC.md` says `FINALIZED`. This prevents building the wrong thing.
 
 ---
 
@@ -422,7 +422,7 @@ All workflow files include **dual syntax** — both PowerShell and Bash commands
 
 ## 🤖 Multi-Model Support
 
-GSD is **model-agnostic** — use any LLM that works in your environment.
+DevFlow is **model-agnostic** — use any LLM that works in your environment.
 
 ### Canonical Rules
 
@@ -519,7 +519,7 @@ adapters/
 
 ```
 📄 PROJECT_RULES.md          # ← Canonical rules (model-agnostic)
-📄 GSD-STYLE.md              # Complete style guide
+📄 DevFlow-STYLE.md              # Complete style guide
 
 📂 .agent/
 └── 📂 workflows/            # 27 slash commands
@@ -531,7 +531,7 @@ adapters/
 📂 .gemini/
 └── 📄 GEMINI.md             # Gemini integration
 
-📂 .gsd/
+📂 .devflow/
 ├── 📄 SPEC.md               # ← START HERE (finalize first)
 ├── 📄 ROADMAP.md            # Phases and progress
 ├── 📄 STATE.md              # Session memory
@@ -564,7 +564,7 @@ adapters/
 
 ## 🧪 Testing
 
-Run validation scripts to verify GSD structure:
+Run validation scripts to verify DevFlow structure:
 
 <details>
 <summary><b>🪟 PowerShell</b></summary>
@@ -599,13 +599,13 @@ Run validation scripts to verify GSD structure:
 | Resource | Description |
 |----------|-------------|
 | [PROJECT_RULES.md](PROJECT_RULES.md) | Canonical model-agnostic rules |
-| [GSD-STYLE.md](GSD-STYLE.md) | Complete style and conventions guide |
+| [DevFlow-STYLE.md](DevFlow-STYLE.md) | Complete style and conventions guide |
 | [Model Selection Playbook](docs/model-selection-playbook.md) | Model selection guidance |
 | [Runbook](docs/runbook.md) | Operational procedures |
 | [Token Optimization Guide](docs/token-optimization-guide.md) | Token efficiency strategies |
 | [Subagent Delegation](.agents/skills/subagent-delegation/SKILL.md) | When and how workflows delegate to subagents |
-| [Examples](.gsd/examples/) | Usage walkthroughs and quick reference |
-| [Templates](.gsd/templates/) | Document templates for plans, verification |
+| [Examples](.devflow/examples/) | Usage walkthroughs and quick reference |
+| [Templates](.devflow/templates/) | Document templates for plans, verification |
 
 ---
 
@@ -642,10 +642,10 @@ Run validation scripts to verify GSD structure:
 
 <div align="center">
 
-<sub>Adapted from <a href="https://github.com/glittercowboy/get-shit-done">glittercowboy/get-shit-done</a> for Google Antigravity</sub>
+<sub>Adapted from <a href="https://github.com/glittercowboy/devflow">glittercowboy/devflow</a> for Google Antigravity</sub>
 
 <br/>
 
-[![GitHub](https://img.shields.io/badge/GitHub-toonight-181717?style=flat-square&logo=github)](https://github.com/toonight/get-shit-done-for-antigravity)
+[![GitHub](https://img.shields.io/badge/GitHub-toonight-181717?style=flat-square&logo=github)](https://github.com/toonight/devflow-for-antigravity)
 
 </div>

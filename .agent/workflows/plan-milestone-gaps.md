@@ -1,4 +1,4 @@
----
+﻿---
 description: Create plans to address gaps found in milestone audit
 ---
 
@@ -88,7 +88,7 @@ Addressing {N} gaps from milestone audit.
 ## 6. Commit Plans
 
 ```powershell
-git add .gsd/
+git add .devflow/
 git commit -m "docs: create gap closure plans"
 ```
 
@@ -98,7 +98,7 @@ git commit -m "docs: create gap closure plans"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► GAP CLOSURE PLANS CREATED ✓
+ DevFlow ► GAP CLOSURE PLANS CREATED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Gaps identified: {N}
@@ -114,3 +114,4 @@ Plans created: {M}
 ```
 
 </process>
+

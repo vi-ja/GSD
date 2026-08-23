@@ -1,11 +1,11 @@
----
-description: Show all available GSD commands
+﻿---
+description: Show all available DevFlow commands
 ---
 
 # /help Workflow
 
 <objective>
-Display all available GSD commands with descriptions and usage hints.
+Display all available DevFlow commands with descriptions and usage hints.
 </objective>
 
 <process>
@@ -27,7 +27,7 @@ version=$(cat VERSION 2>/dev/null || echo "unknown")
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► HELP (v{version})
+ DevFlow ► HELP (v{version})
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 CORE WORKFLOW
@@ -88,9 +88,10 @@ CORE RULES
 
 ───────────────────────────────────────────────────────
 
-📚 Docs: GSD-STYLE.md, .gsd/examples/
+📚 Docs: DevFlow-STYLE.md, .devflow/examples/
 
 ───────────────────────────────────────────────────────
 ```
 
 </process>
+

@@ -1,4 +1,4 @@
-# search_repo.ps1 - Search codebase with best available tool
+﻿# search_repo.ps1 - Search codebase with best available tool
 #
 # Usage: .\scripts\search_repo.ps1 <pattern> [path] [options]
 #
@@ -93,3 +93,4 @@ catch {
     Write-Host "Search error: $_" -ForegroundColor Red
     exit 1
 }
+

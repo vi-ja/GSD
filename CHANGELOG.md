@@ -1,12 +1,12 @@
-# Changelog
+﻿# Changelog
 
-All notable changes to GSD for Antigravity.
+All notable changes to DevFlow for Antigravity.
 
 ## [1.6.0] - 2026-08-20
 
 ### Added
-- **Native subagent delegation** — GSD workflows now delegate to Antigravity subagents via `invoke_subagent` instead of running everything in the main context window (closes #15)
-- **5 subagent definitions** in `.agents/agents/` — `gsd-planner`, `gsd-executor`, `gsd-verifier`, `gsd-researcher`, `gsd-debugger`, each equipped with existing skills through the `skills:` frontmatter field
+- **Native subagent delegation** — DevFlow workflows now delegate to Antigravity subagents via `invoke_subagent` instead of running everything in the main context window (closes #15)
+- **5 subagent definitions** in `.agents/agents/` — `devflow-planner`, `devflow-executor`, `devflow-verifier`, `devflow-researcher`, `devflow-debugger`, each equipped with existing skills through the `skills:` frontmatter field
 - **`subagent-delegation` skill** — canonical protocol covering what to delegate, invocation prompt contract, workspace isolation modes, result handling, and the inline fallback
 - **Workspace isolation for waves** — plans sharing a wave run in isolated git worktrees (`branch` mode), merged when the wave closes
 - **Delegation rule** in PROJECT_RULES.md
@@ -17,11 +17,11 @@ All notable changes to GSD for Antigravity.
 - `validate-encoding.ps1/.sh` — parses every PowerShell script and checks that any script with non-ASCII characters carries a UTF-8 BOM; wired into `validate-all`
 
 ### Changed
-- `/execute` delegates one `gsd-executor` per plan and routes on compact result blocks instead of executing inline
-- `/plan` delegates research to `gsd-researcher` and plan authoring to `gsd-planner`
-- `/verify` delegates to `gsd-verifier` — verification now runs on a context that never saw the implementation, which changes the result and not just the token count
-- `/map` and `/research-phase` delegate discovery to `gsd-researcher`
-- `/debug` delegates to `gsd-debugger`, especially when the calling context has already failed to fix the issue
+- `/execute` delegates one `devflow-executor` per plan and routes on compact result blocks instead of executing inline
+- `/plan` delegates research to `devflow-researcher` and plan authoring to `devflow-planner`
+- `/verify` delegates to `devflow-verifier` — verification now runs on a context that never saw the implementation, which changes the result and not just the token count
+- `/map` and `/research-phase` delegate discovery to `devflow-researcher`
+- `/debug` delegates to `devflow-debugger`, especially when the calling context has already failed to fix the issue
 - README documents subagent delegation and the Antigravity 2.0+ requirement
 
 ### Fixed
@@ -30,7 +30,7 @@ All notable changes to GSD for Antigravity.
 - **`validate-all.ps1` reported success when a child validator never ran** — a script that fails to launch leaves `$LASTEXITCODE` untouched, so the suite printed "All validators passed!" while nothing had been validated. This is why the encoding fault went unnoticed
 
 ### Notes
-- `.gsd/ARCHITECTURE.md` and `.gsd/DECISIONS.md` are gitignored project state, not shipped template files. The design rationale for delegation lives in `.agents/skills/subagent-delegation/SKILL.md`
+- `.devflow/ARCHITECTURE.md` and `.devflow/DECISIONS.md` are gitignored project state, not shipped template files. The design rationale for delegation lives in `.agents/skills/subagent-delegation/SKILL.md`
 
 ### Compatibility
 - Requires Antigravity **2.0+** for delegation. On 1.x, workflows announce degraded mode and run inline — one plan per session, `/pause` between plans
@@ -41,7 +41,7 @@ All notable changes to GSD for Antigravity.
 
 ### Breaking Changes
 - **Skills moved from `.agent/skills/` to `.agents/skills/`** — aligns with the [Agent Skills open standard](https://agentskills.io/specification), the universal cross-agent discovery path used by Gemini CLI, Claude Code, Cursor, VS Code Copilot, and other compatible agents
-- **SKILL.md `name` fields updated** — all 11 skills now use lowercase-hyphenated names matching their folder names per spec (e.g., `GSD Executor` → `executor`)
+- **SKILL.md `name` fields updated** — all 11 skills now use lowercase-hyphenated names matching their folder names per spec (e.g., `DevFlow Executor` → `executor`)
 
 ### Added
 - `/sprint` workflow — time-boxed sprints (new/status/close) for quick focused work outside the milestone cycle
@@ -107,7 +107,7 @@ All notable changes to GSD for Antigravity.
 ### Added
 - **Template Parity** — 14 templates aligned with original repository
   - `DEBUG.md`, `UAT.md`, `discovery.md`, `requirements.md`, etc.
-- **Examples** — `.gsd/examples/` directory
+- **Examples** — `.devflow/examples/` directory
   - `workflow-example.md` — Full workflow walkthrough
   - `quick-reference.md` — Command cheat sheet
   - `cross-platform.md` — Platform-specific guidance
@@ -161,7 +161,7 @@ All notable changes to GSD for Antigravity.
 
 **Documentation**
 - README.md with full methodology explanation
-- GSD-STYLE.md comprehensive style guide
+- DevFlow-STYLE.md comprehensive style guide
 - Templates: PLAN.md, VERIFICATION.md, RESEARCH.md, SUMMARY.md
 - Examples: workflow-example.md, quick-reference.md, cross-platform.md
 
@@ -170,4 +170,5 @@ All notable changes to GSD for Antigravity.
 - Planning Lock, State Persistence, Context Hygiene, Empirical Validation
 
 ### Attribution
-Adapted from [glittercowboy/get-shit-done](https://github.com/glittercowboy/get-shit-done) for Google Antigravity.
+Adapted from [glittercowboy/devflow](https://github.com/glittercowboy/devflow) for Google Antigravity.
+

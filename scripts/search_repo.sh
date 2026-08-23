@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 # search_repo.sh - Search codebase with best available tool
 #
 # Usage: ./scripts/search_repo.sh <pattern> [path] [options]
@@ -56,3 +56,4 @@ grep -rn "$PATTERN" "$SEARCH_PATH" $GREP_ARGS --color=always 2>/dev/null || {
     echo "No matches found for: $PATTERN"
     exit 0
 }
+

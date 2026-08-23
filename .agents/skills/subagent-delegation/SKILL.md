@@ -1,6 +1,6 @@
----
+﻿---
 name: subagent-delegation
-description: Canonical protocol for delegating GSD work to native Antigravity subagents — when to delegate, how to invoke, workspace isolation modes, and the inline fallback for older IDE versions
+description: Canonical protocol for delegating DevFlow work to native Antigravity subagents — when to delegate, how to invoke, workspace isolation modes, and the inline fallback for older IDE versions
 ---
 
 # Subagent Delegation Protocol
@@ -8,7 +8,7 @@ description: Canonical protocol for delegating GSD work to native Antigravity su
 <role>
 You are an orchestrator. Your context is a budget, and the work you do yourself spends it.
 
-Delegation is not an optimization in GSD — it is the mechanism that makes the quality
+Delegation is not an optimization in DevFlow — it is the mechanism that makes the quality
 thresholds in PROJECT_RULES.md achievable. An orchestrator that reads twenty files to plan a
 phase has already spent the context the phase needed.
 </role>
@@ -28,7 +28,7 @@ probe by calling it — a failed call wastes a turn and confuses the user.
 | Not available | Inline fallback (see below) |
 
 **Plan requirements:** none beyond 2.0. Plain subagents are not plan-gated — only
-*Multi-Agent Teamwork* (`/teamwork-preview`, Agent Teams) is Ultra-exclusive, and GSD never
+*Multi-Agent Teamwork* (`/teamwork-preview`, Agent Teams) is Ultra-exclusive, and DevFlow never
 uses it. If delegation is unavailable, the cause is the IDE version, not the subscription.
 
 ---
@@ -37,11 +37,11 @@ uses it. If delegation is unavailable, the cause is the IDE version, not the sub
 
 | Work | Subagent | Why |
 |------|----------|-----|
-| Executing a PLAN.md | `gsd-executor` | One clean context per plan is the core GSD promise |
-| Authoring plans for a phase | `gsd-planner` | Plan authoring reads spec + roadmap + research |
-| Verifying a phase | `gsd-verifier` | Independence requires a context that never saw the work |
-| Codebase mapping / research | `gsd-researcher` | Exploration is the largest single context cost |
-| Diagnosing a bug | `gsd-debugger` | A polluted context repeats its own failed hypotheses |
+| Executing a PLAN.md | `devflow-executor` | One clean context per plan is the core DevFlow promise |
+| Authoring plans for a phase | `devflow-planner` | Plan authoring reads spec + roadmap + research |
+| Verifying a phase | `devflow-verifier` | Independence requires a context that never saw the work |
+| Codebase mapping / research | `devflow-researcher` | Exploration is the largest single context cost |
+| Diagnosing a bug | `devflow-debugger` | A polluted context repeats its own failed hypotheses |
 
 **Keep in the orchestrator:** argument parsing, file existence checks, wave grouping, reading
 compact subagent results, updating STATE.md and ROADMAP.md, and talking to the user.
@@ -63,7 +63,7 @@ Anything you do not put in its prompt does not exist for it.
 Every invocation prompt must carry:
 
 1. **The contract fields** the target subagent declares in its Invocation Contract table
-2. **Paths, not contents** — `.gsd/phases/2/1-PLAN.md`, never the pasted plan
+2. **Paths, not contents** — `.devflow/phases/2/1-PLAN.md`, never the pasted plan
 3. **Constraints from STATE.md** that bound the work — decisions already made, known blockers
 4. **The return contract** — restate that you want the compact block, nothing more
 
@@ -128,7 +128,7 @@ A subagent returns its compact block. That block is what enters your context —
   find out which capability it lacked, and fix the definition — do not paste the content
   onward, or the delegation cost you tokens and bought you nothing.
 
-Depth is capped at 10 levels of nesting. GSD never needs more than 2 — orchestrator to
+Depth is capped at 10 levels of nesting. DevFlow never needs more than 2 — orchestrator to
 subagent. A subagent that wants to delegate should return `needs_input` instead.
 
 ---
@@ -154,3 +154,4 @@ Then apply the degraded-mode discipline:
 
 Do not silently pretend to delegate. The failure this protocol was written to fix was
 workflows describing subagents they never spawned.
+

@@ -1,4 +1,4 @@
----
+﻿---
 description: Audit a milestone for quality and completeness
 argument-hint: "[milestone-name]"
 ---
@@ -15,7 +15,7 @@ Review a completed (or in-progress) milestone for quality, completeness, and les
 
 If milestone name provided, load from archive:
 ```powershell
-Get-Content ".gsd/milestones/{name}-SUMMARY.md"
+Get-Content ".devflow/milestones/{name}-SUMMARY.md"
 ```
 
 If no name, audit current milestone from ROADMAP.md.
@@ -88,7 +88,7 @@ For each phase:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► AUDIT COMPLETE
+ DevFlow ► AUDIT COMPLETE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Milestone: {name}
@@ -105,3 +105,4 @@ Health: {GOOD | CONCERNS | NEEDS ATTENTION}
 ```
 
 </process>
+

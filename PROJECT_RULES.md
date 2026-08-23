@@ -1,6 +1,6 @@
-# PROJECT_RULES.md — GSD Canonical Rules
+﻿# PROJECT_RULES.md — DevFlow Canonical Rules
 
-> **Single Source of Truth** for the Get Shit Done methodology.
+> **Single Source of Truth** for the DevFlow methodology.
 > 
 > Model-agnostic. All adapters and extensions reference this file.
 
@@ -10,8 +10,8 @@
 
 **SPEC → PLAN → EXECUTE → VERIFY → COMMIT**
 
-1. **SPEC**: Define requirements in `.gsd/SPEC.md` until status is `FINALIZED`
-2. **PLAN**: Decompose into phases in `.gsd/ROADMAP.md`, then detailed plans
+1. **SPEC**: Define requirements in `.devflow/SPEC.md` until status is `FINALIZED`
+2. **PLAN**: Decompose into phases in `.devflow/ROADMAP.md`, then detailed plans
 3. **EXECUTE**: Implement with atomic commits per task
 4. **VERIFY**: Prove completion with empirical evidence
 5. **COMMIT**: One task = one commit, message format: `type(scope): description`
@@ -64,11 +64,11 @@ context. The orchestrator reads compact results only.
 
 | Work | Subagent |
 |------|----------|
-| Plan execution | `gsd-executor` (one per PLAN.md) |
-| Plan authoring | `gsd-planner` |
-| Phase verification | `gsd-verifier` |
-| Mapping and research | `gsd-researcher` |
-| Bug diagnosis | `gsd-debugger` |
+| Plan execution | `devflow-executor` (one per PLAN.md) |
+| Plan authoring | `devflow-planner` |
+| Phase verification | `devflow-verifier` |
+| Mapping and research | `devflow-researcher` |
+| Bug diagnosis | `devflow-debugger` |
 
 **Non-negotiable:**
 - A subagent inherits **no** conversation history — put every needed fact in its prompt
@@ -92,7 +92,7 @@ Plans are grouped into **waves** based on dependencies:
 | 3 | Depends on Wave 2 | Wait for Wave 2, then parallel |
 
 **Parallelism is real only with subagents.** A wave with multiple plans runs one
-`gsd-executor` per plan in `branch` workspace mode (isolated git worktrees), merged when the
+`devflow-executor` per plan in `branch` workspace mode (isolated git worktrees), merged when the
 wave closes. Without subagents, a "wave" degrades to sequential execution in one context —
 plan it as such.
 
@@ -211,7 +211,7 @@ reported as done, the worktree is discarded, and the change is gone.
 
 ```
 PROJECT_RULES.md          # ← This file (canonical rules)
-GSD-STYLE.md              # Style and conventions
+DevFlow-STYLE.md              # Style and conventions
 
 .agent/
 └── workflows/            # Slash commands (/plan, /execute, etc.)
@@ -221,7 +221,7 @@ GSD-STYLE.md              # Style and conventions
 └── skills/               # Agent specializations (Agent Skills standard)
 
 .gemini/                  # Gemini-specific configuration
-.gsd/                     # Project state and artifacts
+.devflow/                     # Project state and artifacts
 ├── SPEC.md               # Requirements (must be FINALIZED)
 ├── ROADMAP.md            # Phases and progress
 ├── STATE.md              # Session memory
@@ -248,7 +248,7 @@ scripts/                  # Utility scripts
 
 **Context Hygiene Rules:**
 - Keep plans under 50% context usage
-- Fresh context for each plan execution — enforced by one `gsd-executor` subagent per plan,
+- Fresh context for each plan execution — enforced by one `devflow-executor` subagent per plan,
   not by hoping the orchestrator stays tidy
 - After 3 debugging failures → state dump → fresh session
 - STATE.md = memory across sessions
@@ -311,5 +311,6 @@ Before "Done"    → Empirical proof captured
 
 ---
 
-*GSD Methodology — Model-Agnostic Edition*
+*DevFlow Methodology — Model-Agnostic Edition*
 *Reference implementation for multi-LLM environments*
+

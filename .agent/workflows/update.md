@@ -1,11 +1,11 @@
----
-description: Update GSD to the latest version from GitHub
+﻿---
+description: Update DevFlow to the latest version from GitHub
 ---
 
 # /update Workflow
 
 <objective>
-Update GSD for Antigravity to the latest version from GitHub.
+Update DevFlow for Antigravity to the latest version from GitHub.
 </objective>
 
 <process>
@@ -35,7 +35,7 @@ fi
 
 ```bash
 # Clone latest to temp directory
-git clone --depth 1 https://github.com/toonight/get-shit-done-for-antigravity.git .gsd-update-temp
+git clone --depth 1 https://github.com/toonight/devflow-for-antigravity.git .devflow-update-temp
 ```
 
 ---
@@ -44,7 +44,7 @@ git clone --depth 1 https://github.com/toonight/get-shit-done-for-antigravity.gi
 
 **PowerShell:**
 ```powershell
-$remoteVersion = Select-String -Path ".gsd-update-temp/CHANGELOG.md" -Pattern "## \[(\d+\.\d+\.\d+)\]" | 
+$remoteVersion = Select-String -Path ".devflow-update-temp/CHANGELOG.md" -Pattern "## \[(\d+\.\d+\.\d+)\]" | 
     Select-Object -First 1
 
 Write-Output "Remote version: $($remoteVersion.Matches.Groups[1].Value)"
@@ -52,14 +52,14 @@ Write-Output "Remote version: $($remoteVersion.Matches.Groups[1].Value)"
 
 **Bash:**
 ```bash
-remote_version=$(grep -oP '## \[\K[0-9]+\.[0-9]+\.[0-9]+' .gsd-update-temp/CHANGELOG.md | head -1)
+remote_version=$(grep -oP '## \[\K[0-9]+\.[0-9]+\.[0-9]+' .devflow-update-temp/CHANGELOG.md | head -1)
 echo "Remote version: $remote_version"
 ```
 
 **If same version:**
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► ALREADY UP TO DATE ✓
+ DevFlow ► ALREADY UP TO DATE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Version: {version}
@@ -76,7 +76,7 @@ Exit after cleanup.
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► UPDATE AVAILABLE
+ DevFlow ► UPDATE AVAILABLE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Current: {current-version}
@@ -105,22 +105,22 @@ B) No — Cancel
 # Backup current
 Copy-Item -Recurse ".agent" ".agent.backup"
 Copy-Item -Recurse ".agents" ".agents.backup"
-Copy-Item -Recurse ".gsd/templates" ".gsd/templates.backup"
+Copy-Item -Recurse ".devflow/templates" ".devflow/templates.backup"
 
-# Update workflows (preserve user's .gsd docs)
-Copy-Item -Recurse -Force ".gsd-update-temp/.agent/*" ".agent/"
+# Update workflows (preserve user's .devflow docs)
+Copy-Item -Recurse -Force ".devflow-update-temp/.agent/*" ".agent/"
 
 # Update skills (Agent Skills standard)
-Copy-Item -Recurse -Force ".gsd-update-temp/.agents/*" ".agents/"
+Copy-Item -Recurse -Force ".devflow-update-temp/.agents/*" ".agents/"
 
 # Update templates only
-Copy-Item -Recurse -Force ".gsd-update-temp/.gsd/templates/*" ".gsd/templates/"
+Copy-Item -Recurse -Force ".devflow-update-temp/.devflow/templates/*" ".devflow/templates/"
 
 # Update root files
-Copy-Item -Force ".gsd-update-temp/GSD-STYLE.md" "./"
-Copy-Item -Force ".gsd-update-temp/CHANGELOG.md" "./"
-Copy-Item -Force ".gsd-update-temp/PROJECT_RULES.md" "./"
-Copy-Item -Force ".gsd-update-temp/VERSION" "./"
+Copy-Item -Force ".devflow-update-temp/DevFlow-STYLE.md" "./"
+Copy-Item -Force ".devflow-update-temp/CHANGELOG.md" "./"
+Copy-Item -Force ".devflow-update-temp/PROJECT_RULES.md" "./"
+Copy-Item -Force ".devflow-update-temp/VERSION" "./"
 ```
 
 **Bash:**
@@ -128,22 +128,22 @@ Copy-Item -Force ".gsd-update-temp/VERSION" "./"
 # Backup current
 cp -r .agent .agent.backup
 cp -r .agents .agents.backup
-cp -r .gsd/templates .gsd/templates.backup
+cp -r .devflow/templates .devflow/templates.backup
 
-# Update workflows (preserve user's .gsd docs)
-cp -r .gsd-update-temp/.agent/* .agent/
+# Update workflows (preserve user's .devflow docs)
+cp -r .devflow-update-temp/.agent/* .agent/
 
 # Update skills (Agent Skills standard)
-cp -r .gsd-update-temp/.agents/* .agents/
+cp -r .devflow-update-temp/.agents/* .agents/
 
 # Update templates only
-cp -r .gsd-update-temp/.gsd/templates/* .gsd/templates/
+cp -r .devflow-update-temp/.devflow/templates/* .devflow/templates/
 
 # Update root files
-cp .gsd-update-temp/GSD-STYLE.md ./
-cp .gsd-update-temp/CHANGELOG.md ./
-cp .gsd-update-temp/PROJECT_RULES.md ./
-cp .gsd-update-temp/VERSION ./
+cp .devflow-update-temp/DevFlow-STYLE.md ./
+cp .devflow-update-temp/CHANGELOG.md ./
+cp .devflow-update-temp/PROJECT_RULES.md ./
+cp .devflow-update-temp/VERSION ./
 ```
 
 ---
@@ -152,18 +152,18 @@ cp .gsd-update-temp/VERSION ./
 
 **PowerShell:**
 ```powershell
-Remove-Item -Recurse -Force ".gsd-update-temp"
+Remove-Item -Recurse -Force ".devflow-update-temp"
 Remove-Item -Recurse -Force ".agent.backup"
 Remove-Item -Recurse -Force ".agents.backup"
-Remove-Item -Recurse -Force ".gsd/templates.backup"
+Remove-Item -Recurse -Force ".devflow/templates.backup"
 ```
 
 **Bash:**
 ```bash
-rm -rf .gsd-update-temp
+rm -rf .devflow-update-temp
 rm -rf .agent.backup
 rm -rf .agents.backup
-rm -rf .gsd/templates.backup
+rm -rf .devflow/templates.backup
 ```
 
 ---
@@ -172,7 +172,7 @@ rm -rf .gsd/templates.backup
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► UPDATED ✓
+ DevFlow ► UPDATED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Updated to version {remote-version}
@@ -188,14 +188,15 @@ Updated to version {remote-version}
 
 <preserved_files>
 These user files are NEVER overwritten:
-- .gsd/SPEC.md
-- .gsd/ROADMAP.md
-- .gsd/STATE.md
-- .gsd/ARCHITECTURE.md
-- .gsd/STACK.md
-- .gsd/DECISIONS.md
-- .gsd/JOURNAL.md
-- .gsd/TODO.md
-- .gsd/phases/*
+- .devflow/SPEC.md
+- .devflow/ROADMAP.md
+- .devflow/STATE.md
+- .devflow/ARCHITECTURE.md
+- .devflow/STACK.md
+- .devflow/DECISIONS.md
+- .devflow/JOURNAL.md
+- .devflow/TODO.md
+- .devflow/phases/*
 - .gemini/GEMINI.md
 </preserved_files>
+

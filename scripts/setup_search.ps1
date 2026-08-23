@@ -1,10 +1,10 @@
-﻿# setup_search.ps1 - Optional search tool setup for GSD
+﻿# setup_search.ps1 - Optional search tool setup for DevFlow
 #
 # This script checks for and provides guidance on installing search tools.
-# GSD works without these tools (falls back to Select-String), but they improve performance.
+# DevFlow works without these tools (falls back to Select-String), but they improve performance.
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host " GSD ► Search Tools Setup" -ForegroundColor Cyan
+Write-Host " DevFlow ► Search Tools Setup" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
@@ -50,7 +50,7 @@ if ($rgInstalled -and $fdInstalled) {
 else {
     Write-Host "⚠️  Some tools are missing (optional)" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "GSD will work fine with built-in Select-String, but ripgrep and fd"
+    Write-Host "DevFlow will work fine with built-in Select-String, but ripgrep and fd"
     Write-Host "provide faster searching in large codebases."
     Write-Host ""
     Write-Host "───────────────────────────────────────────────────────" -ForegroundColor Gray
@@ -92,6 +92,7 @@ else {
     Write-Host "───────────────────────────────────────────────────────" -ForegroundColor Gray
     Write-Host ""
     Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-    Write-Host " GSD ► Using Select-String as fallback (works fine!)" -ForegroundColor Cyan
+    Write-Host " DevFlow ► Using Select-String as fallback (works fine!)" -ForegroundColor Cyan
     Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 }
+

@@ -1,4 +1,4 @@
----
+﻿---
 description: Show current position in roadmap and next steps
 ---
 
@@ -13,8 +13,8 @@ Quick status check — where are we and what's next?
 ## 1. Load Current State
 
 Read:
-- `.gsd/STATE.md` — Current position
-- `.gsd/ROADMAP.md` — Phase statuses
+- `.devflow/STATE.md` — Current position
+- `.devflow/ROADMAP.md` — Phase statuses
 
 ---
 
@@ -33,7 +33,7 @@ Count phases:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► PROGRESS
+ DevFlow ► PROGRESS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Project: {project name from SPEC.md}
@@ -88,3 +88,4 @@ Based on status, recommend:
 | SPEC not finalized | Complete SPEC.md first |
 
 </process>
+

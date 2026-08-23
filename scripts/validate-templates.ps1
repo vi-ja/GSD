@@ -1,16 +1,16 @@
-﻿# GSD Template Validation Script
-# Validates all template files in .gsd/templates/
+﻿# DevFlow Template Validation Script
+# Validates all template files in .devflow/templates/
 
 $ErrorCount = 0
 $WarningCount = 0
 $TemplatesChecked = 0
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host " GSD ► VALIDATING TEMPLATES" -ForegroundColor Cyan
+Write-Host " DevFlow ► VALIDATING TEMPLATES" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
-$templates = Get-ChildItem ".gsd/templates/*.md"
+$templates = Get-ChildItem ".devflow/templates/*.md"
 
 foreach ($file in $templates) {
     $TemplatesChecked++
@@ -56,3 +56,4 @@ if ($ErrorCount -eq 0) {
     Write-Host "❌ Validation failed" -ForegroundColor Red
     exit 1
 }
+

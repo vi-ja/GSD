@@ -1,17 +1,17 @@
-#!/bin/bash
-# GSD Template Validation Script
-# Validates all template files in .gsd/templates/
+﻿#!/bin/bash
+# DevFlow Template Validation Script
+# Validates all template files in .devflow/templates/
 
 error_count=0
 warning_count=0
 templates_checked=0
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " GSD ► VALIDATING TEMPLATES"
+echo " DevFlow ► VALIDATING TEMPLATES"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-for file in .gsd/templates/*.md; do
+for file in .devflow/templates/*.md; do
     ((templates_checked++))
     filename=$(basename "$file")
     has_errors=false
@@ -56,3 +56,4 @@ else
     echo "❌ Validation failed"
     exit 1
 fi
+

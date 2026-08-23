@@ -1,4 +1,4 @@
-﻿# GSD Master Validation Script
+﻿# DevFlow Master Validation Script
 # Runs all validators and reports overall status
 
 $TotalErrors = 0
@@ -37,7 +37,7 @@ function Invoke-Validator {
 
 Write-Host ""
 Write-Host "╔═══════════════════════════════════════════════════════╗" -ForegroundColor Magenta
-Write-Host "║         GSD ► RUNNING ALL VALIDATORS                  ║" -ForegroundColor Magenta
+Write-Host "║         DevFlow ► RUNNING ALL VALIDATORS                  ║" -ForegroundColor Magenta
 Write-Host "╚═══════════════════════════════════════════════════════╝" -ForegroundColor Magenta
 Write-Host ""
 
@@ -60,3 +60,4 @@ if ($TotalErrors -eq 0) {
     Write-Host "❌ $TotalErrors validator(s) failed" -ForegroundColor Red
     exit 1
 }
+

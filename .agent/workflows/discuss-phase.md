@@ -1,4 +1,4 @@
----
+﻿---
 description: Discuss a phase before planning (clarify scope and approach)
 argument-hint: "<phase-number>"
 ---
@@ -41,7 +41,7 @@ From phase objective, extract:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► DISCUSS PHASE {N}
+ DevFlow ► DISCUSS PHASE {N}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Phase: {name}
@@ -85,7 +85,7 @@ Listen for:
 
 ## 5. Document Decisions
 
-Update `.gsd/DECISIONS.md`:
+Update `.devflow/DECISIONS.md`:
 
 ```markdown
 ## Phase {N} Decisions
@@ -121,3 +121,4 @@ Update `.gsd/DECISIONS.md`:
 ```
 
 </process>
+

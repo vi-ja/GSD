@@ -1,4 +1,4 @@
----
+﻿---
 name: context-compressor
 description: Strategies for compressing context to maximize token efficiency
 ---
@@ -198,4 +198,5 @@ Works with:
 
 ---
 
-*Part of GSD v1.6 Token Optimization. See docs/token-optimization-guide.md for examples.*
+*Part of DevFlow v1.6 Token Optimization. See docs/token-optimization-guide.md for examples.*
+

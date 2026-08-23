@@ -1,4 +1,4 @@
-# Token Optimization Guide
+﻿# Token Optimization Guide
 
 > Practical strategies for reducing token consumption while maintaining quality.
 
@@ -176,9 +176,9 @@ GOOD:
 
 ---
 
-## Integration with GSD
+## Integration with DevFlow
 
-| GSD Workflow | Token Optimization |
+| DevFlow Workflow | Token Optimization |
 |--------------|-------------------|
 | `/map` | Generate outline, not full read |
 | `/plan` | Budget estimate per task |
@@ -205,3 +205,4 @@ Track these for improvement:
 - *[.agents/skills/token-budget/SKILL.md](.agents/skills/token-budget/SKILL.md)*
 - *[.agents/skills/context-compressor/SKILL.md](.agents/skills/context-compressor/SKILL.md)*
 - *[PROJECT_RULES.md](PROJECT_RULES.md) — Token Efficiency Rules*
+

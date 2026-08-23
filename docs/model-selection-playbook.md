@@ -1,4 +1,4 @@
-# Model Selection Playbook
+﻿# Model Selection Playbook
 
 > Guidance for choosing models by phase and task type.
 > 
@@ -111,9 +111,9 @@
 
 ---
 
-## GSD Model-Agnostic Principle
+## DevFlow Model-Agnostic Principle
 
-GSD works with any capable LLM. The methodology compensates for model differences through:
+DevFlow works with any capable LLM. The methodology compensates for model differences through:
 
 1. **Structured plans** — Reduce ambiguity
 2. **Explicit verification** — Catch errors regardless of model
@@ -126,3 +126,4 @@ Choose models based on task needs, not methodology requirements.
 
 *See PROJECT_RULES.md for canonical rules.*
 *See docs/runbook.md for operational procedures.*
+

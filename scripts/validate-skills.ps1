@@ -1,4 +1,4 @@
-﻿# GSD Skill Validation Script
+﻿# DevFlow Skill Validation Script
 # Validates all skill directories for required structure
 
 $ErrorCount = 0
@@ -6,7 +6,7 @@ $WarningCount = 0
 $SkillsChecked = 0
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host " GSD ► VALIDATING SKILLS" -ForegroundColor Cyan
+Write-Host " DevFlow ► VALIDATING SKILLS" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
@@ -66,3 +66,4 @@ if ($ErrorCount -eq 0) {
     Write-Host "❌ Validation failed" -ForegroundColor Red
     exit 1
 }
+

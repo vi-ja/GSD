@@ -1,5 +1,5 @@
-#!/bin/bash
-# GSD Master Validation Script
+﻿#!/bin/bash
+# DevFlow Master Validation Script
 # Runs all validators and reports overall status
 
 total_errors=0
@@ -7,7 +7,7 @@ script_dir="$(dirname "$0")"
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════╗"
-echo "║         GSD ► RUNNING ALL VALIDATORS                  ║"
+echo "║         DevFlow ► RUNNING ALL VALIDATORS                  ║"
 echo "╚═══════════════════════════════════════════════════════╝"
 echo ""
 
@@ -54,3 +54,4 @@ else
     echo "❌ $total_errors validator(s) failed"
     exit 1
 fi
+

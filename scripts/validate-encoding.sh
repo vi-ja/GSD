@@ -1,5 +1,5 @@
-#!/bin/bash
-# GSD Script Encoding Validation
+﻿#!/bin/bash
+# DevFlow Script Encoding Validation
 # Checks that every PowerShell script with non-ASCII characters carries a UTF-8 BOM.
 #
 # Windows PowerShell 5.1 reads .ps1 files as the system ANSI codepage unless a
@@ -13,7 +13,7 @@ error_count=0
 scripts_checked=0
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo " GSD ► VALIDATING SCRIPT ENCODING"
+echo " DevFlow ► VALIDATING SCRIPT ENCODING"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
@@ -54,3 +54,4 @@ else
     echo "Fix: prepend a UTF-8 BOM to the reported file(s)."
     exit 1
 fi
+

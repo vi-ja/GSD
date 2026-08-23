@@ -1,4 +1,4 @@
-# GPT & Open Source Models Adapter
+﻿# GPT & Open Source Models Adapter
 
 > **Everything in this file is optional.**
 > For canonical rules, see [PROJECT_RULES.md](../PROJECT_RULES.md).
@@ -128,3 +128,4 @@ Not required, but if organizing:
 ---
 
 *See PROJECT_RULES.md for canonical requirements.*
+

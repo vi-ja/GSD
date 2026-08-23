@@ -1,4 +1,4 @@
-﻿# GSD Script Encoding Validation
+﻿# DevFlow Script Encoding Validation
 # Parses every PowerShell script to catch encoding faults before users hit them.
 #
 # Windows PowerShell 5.1 reads .ps1 files as the system ANSI codepage unless a
@@ -9,7 +9,7 @@ $ErrorCount = 0
 $ScriptsChecked = 0
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host " GSD ► VALIDATING SCRIPT ENCODING" -ForegroundColor Cyan
+Write-Host " DevFlow ► VALIDATING SCRIPT ENCODING" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
@@ -66,3 +66,4 @@ if ($ErrorCount -eq 0) {
     Write-Host "❌ Validation failed" -ForegroundColor Red
     exit 1
 }
+

@@ -1,4 +1,4 @@
----
+﻿---
 name: context-fetch
 description: Search-first skill to reduce unnecessary file reads by searching before loading
 ---
@@ -158,9 +158,9 @@ Track your efficiency:
 
 ---
 
-## Integration with GSD
+## Integration with DevFlow
 
-This skill supports GSD's context management:
+This skill supports DevFlow's context management:
 
 - **Prevents context pollution** — Less irrelevant code loaded
 - **Supports wave execution** — Each wave starts with minimal context
@@ -181,4 +181,5 @@ This skill supports GSD's context management:
 
 ---
 
-*Part of GSD methodology. See PROJECT_RULES.md for search-first discipline rules.*
+*Part of DevFlow methodology. See PROJECT_RULES.md for search-first discipline rules.*
+

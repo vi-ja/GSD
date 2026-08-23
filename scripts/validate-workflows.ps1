@@ -1,4 +1,4 @@
-﻿# GSD Workflow Validation Script
+﻿# DevFlow Workflow Validation Script
 # Validates all workflow files for required structure
 
 $ErrorCount = 0
@@ -6,7 +6,7 @@ $WarningCount = 0
 $WorkflowsChecked = 0
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host " GSD ► VALIDATING WORKFLOWS" -ForegroundColor Cyan
+Write-Host " DevFlow ► VALIDATING WORKFLOWS" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
@@ -57,3 +57,4 @@ if ($ErrorCount -eq 0) {
     Write-Host "❌ Validation failed" -ForegroundColor Red
     exit 1
 }
+

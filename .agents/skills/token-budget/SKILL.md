@@ -1,4 +1,4 @@
----
+﻿---
 name: token-budget
 description: Manages token budget estimation and tracking to prevent context overflow
 ---
@@ -163,4 +163,5 @@ This skill integrates with:
 
 ---
 
-*Part of GSD v1.6 Token Optimization. See PROJECT_RULES.md for efficiency rules.*
+*Part of DevFlow v1.6 Token Optimization. See PROJECT_RULES.md for efficiency rules.*
+

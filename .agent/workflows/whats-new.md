@@ -1,11 +1,11 @@
----
-description: Show recent GSD changes and new features
+﻿---
+description: Show recent DevFlow changes and new features
 ---
 
 # /whats-new Workflow
 
 <objective>
-Display recent changes, new features, and improvements to GSD for Antigravity.
+Display recent changes, new features, and improvements to DevFlow for Antigravity.
 </objective>
 
 <process>
@@ -23,7 +23,7 @@ Display the latest version(s) from CHANGELOG.md:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► WHAT'S NEW
+ DevFlow ► WHAT'S NEW
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 VERSION 1.2.0 — 2026-01-17
@@ -54,7 +54,7 @@ VERSION 1.0.0 — 2026-01-17
 
 🎉 INITIAL RELEASE
 
-Full port of GSD methodology to Google Antigravity.
+Full port of DevFlow methodology to Google Antigravity.
 • 24 workflows, 8 skills, 14 templates
 • 4 core rules: Planning Lock, State Persistence,
   Context Hygiene, Empirical Validation
@@ -74,7 +74,8 @@ Full port of GSD methodology to Google Antigravity.
 ### Workflows
 | Command | Relationship |
 |---------|--------------|
-| `/update` | Update GSD to latest version |
+| `/update` | Update DevFlow to latest version |
 | `/help` | List all commands |
 
 </related>
+

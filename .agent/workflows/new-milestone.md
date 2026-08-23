@@ -1,4 +1,4 @@
----
+﻿---
 description: Create a new milestone with phases
 argument-hint: "<milestone-name>"
 ---
@@ -15,14 +15,14 @@ Define a new milestone with goal, phases, and success criteria.
 
 **PowerShell:**
 ```powershell
-if (-not (Test-Path ".gsd/SPEC.md")) {
+if (-not (Test-Path ".devflow/SPEC.md")) {
     Write-Error "SPEC.md required. Run /new-project first."
 }
 ```
 
 **Bash:**
 ```bash
-if [ ! -f ".gsd/SPEC.md" ]; then
+if [ ! -f ".devflow/SPEC.md" ]; then
     echo "Error: SPEC.md required. Run /new-project first." >&2
 fi
 ```
@@ -102,21 +102,21 @@ If DECISIONS.md or JOURNAL.md contain entries from a previous milestone, reset t
 **PowerShell:**
 ```powershell
 # Only reset if files are non-empty and no archive exists yet
-if ((Test-Path ".gsd/DECISIONS.md") -and (Get-Content ".gsd/DECISIONS.md" | Measure-Object -Line).Lines -gt 5) {
-    Set-Content ".gsd/DECISIONS.md" "# Decisions`n`n---`n"
+if ((Test-Path ".devflow/DECISIONS.md") -and (Get-Content ".devflow/DECISIONS.md" | Measure-Object -Line).Lines -gt 5) {
+    Set-Content ".devflow/DECISIONS.md" "# Decisions`n`n---`n"
 }
-if ((Test-Path ".gsd/JOURNAL.md") -and (Get-Content ".gsd/JOURNAL.md" | Measure-Object -Line).Lines -gt 5) {
-    Set-Content ".gsd/JOURNAL.md" "# Journal`n`n---`n"
+if ((Test-Path ".devflow/JOURNAL.md") -and (Get-Content ".devflow/JOURNAL.md" | Measure-Object -Line).Lines -gt 5) {
+    Set-Content ".devflow/JOURNAL.md" "# Journal`n`n---`n"
 }
 ```
 
 **Bash:**
 ```bash
-if [ -f ".gsd/DECISIONS.md" ] && [ "$(wc -l < .gsd/DECISIONS.md)" -gt 5 ]; then
-    printf '# Decisions\n\n---\n' > .gsd/DECISIONS.md
+if [ -f ".devflow/DECISIONS.md" ] && [ "$(wc -l < .devflow/DECISIONS.md)" -gt 5 ]; then
+    printf '# Decisions\n\n---\n' > .devflow/DECISIONS.md
 fi
-if [ -f ".gsd/JOURNAL.md" ] && [ "$(wc -l < .gsd/JOURNAL.md)" -gt 5 ]; then
-    printf '# Journal\n\n---\n' > .gsd/JOURNAL.md
+if [ -f ".devflow/JOURNAL.md" ] && [ "$(wc -l < .devflow/JOURNAL.md)" -gt 5 ]; then
+    printf '# Journal\n\n---\n' > .devflow/JOURNAL.md
 fi
 ```
 
@@ -127,7 +127,7 @@ fi
 ## 6. Commit
 
 ```bash
-git add .gsd/ROADMAP.md .gsd/STATE.md
+git add .devflow/ROADMAP.md .devflow/STATE.md
 git commit -m "docs: create milestone {name}"
 ```
 
@@ -137,7 +137,7 @@ git commit -m "docs: create milestone {name}"
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► MILESTONE CREATED ✓
+ DevFlow ► MILESTONE CREATED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Milestone: {name}
@@ -153,3 +153,4 @@ Phases: {N}
 ```
 
 </process>
+
